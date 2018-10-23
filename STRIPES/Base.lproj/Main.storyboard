@@ -241,7 +241,7 @@ after 12 PM the next business day. </string>
                                 <rect key="frame" x="0.0" y="88" width="375" height="724"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0nh-oC-mDO">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="523"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="597"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please fill out this form to request a ride." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sgA-P8-obA">
                                                 <rect key="frame" x="16" y="15" width="343" height="21"/>
@@ -290,13 +290,13 @@ after 12 PM the next business day. </string>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Passengers:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="loF-dO-eJw">
-                                                <rect key="frame" x="16" y="341" width="99" height="22"/>
+                                                <rect key="frame" x="16" y="415" width="99" height="22"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="xro-Nm-Kxq">
-                                                <rect key="frame" x="16" y="388" width="343" height="46"/>
+                                                <rect key="frame" x="16" y="462" width="343" height="46"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="ZJz-Kc-lWG"/>
                                                     <constraint firstAttribute="height" constant="45" id="mfC-bx-Faj"/>
@@ -309,8 +309,8 @@ after 12 PM the next business day. </string>
                                                     <segment title="5"/>
                                                 </segments>
                                             </segmentedControl>
-                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="R3n-em-lPe">
-                                                <rect key="frame" x="106.66666666666667" y="458" width="252.33333333333331" height="46"/>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="R3n-em-lPe">
+                                                <rect key="frame" x="106" y="504" width="252.33333333333331" height="46"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="jRT-O5-f1W"/>
                                                 </constraints>
@@ -320,11 +320,24 @@ after 12 PM the next business day. </string>
                                                 </segments>
                                             </segmentedControl>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dropoffs:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gc1-S9-mHK">
-                                                <rect key="frame" x="16" y="468" width="75.666666666666671" height="22"/>
+                                                <rect key="frame" x="16" y="542" width="75.666666666666671" height="22"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hii-F0-EJM">
+                                                <rect key="frame" x="16" y="331" width="165" height="44"/>
+                                                <color key="backgroundColor" red="0.018645260483026505" green="0.47766226530075073" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="YUw-vx-JTt"/>
+                                                </constraints>
+                                                <state key="normal" title="Find My Location">
+                                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="findMyLocation" destination="eH5-U9-Kox" eventType="touchUpInside" id="zHm-db-y1v"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.82352941180000006" green="0.83529411760000005" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -333,26 +346,29 @@ after 12 PM the next business day. </string>
                                             <constraint firstItem="H7w-ep-yff" firstAttribute="top" secondItem="ATc-UL-6WT" secondAttribute="bottom" constant="25" id="4mx-wd-N09"/>
                                             <constraint firstItem="xro-Nm-Kxq" firstAttribute="top" secondItem="loF-dO-eJw" secondAttribute="bottom" constant="25" id="4wO-0b-1cL"/>
                                             <constraint firstAttribute="bottom" secondItem="R3n-em-lPe" secondAttribute="bottom" constant="20" symbolic="YES" id="5KF-ab-0ty"/>
+                                            <constraint firstItem="hii-F0-EJM" firstAttribute="leading" secondItem="0nh-oC-mDO" secondAttribute="leading" constant="16" id="6Sx-bY-QAV"/>
                                             <constraint firstAttribute="trailing" secondItem="H7w-ep-yff" secondAttribute="trailing" constant="16" id="6b9-Or-0bO"/>
                                             <constraint firstItem="xro-Nm-Kxq" firstAttribute="leading" secondItem="0nh-oC-mDO" secondAttribute="leading" constant="16" id="9Ce-iy-z3R"/>
                                             <constraint firstItem="R3n-em-lPe" firstAttribute="top" secondItem="xro-Nm-Kxq" secondAttribute="bottom" constant="25" id="9vT-zG-zB0"/>
                                             <constraint firstAttribute="trailing" secondItem="EW6-SQ-ecO" secondAttribute="trailing" constant="16" id="D11-1N-gQU"/>
+                                            <constraint firstItem="hii-F0-EJM" firstAttribute="top" secondItem="IqL-9d-hHm" secondAttribute="bottom" constant="15" id="EZO-bL-B7F"/>
                                             <constraint firstItem="IqL-9d-hHm" firstAttribute="top" secondItem="EW6-SQ-ecO" secondAttribute="bottom" constant="25" id="H5d-Tl-14C"/>
                                             <constraint firstItem="gc1-S9-mHK" firstAttribute="leading" secondItem="0nh-oC-mDO" secondAttribute="leading" constant="16" id="Hzn-R8-pFX"/>
                                             <constraint firstItem="EW6-SQ-ecO" firstAttribute="top" secondItem="H7w-ep-yff" secondAttribute="bottom" constant="25" id="N3r-Oe-nYs"/>
                                             <constraint firstAttribute="trailing" secondItem="R3n-em-lPe" secondAttribute="trailing" constant="16" id="PLt-Jz-3Mj"/>
                                             <constraint firstAttribute="trailing" secondItem="sgA-P8-obA" secondAttribute="trailing" constant="16" id="RBV-qA-W2x"/>
                                             <constraint firstItem="ATc-UL-6WT" firstAttribute="leading" secondItem="0nh-oC-mDO" secondAttribute="leading" constant="16" id="Ywi-qA-FRu"/>
+                                            <constraint firstAttribute="trailing" secondItem="hii-F0-EJM" secondAttribute="trailing" constant="194" id="ZbC-fU-Nwp"/>
                                             <constraint firstItem="sgA-P8-obA" firstAttribute="top" secondItem="0nh-oC-mDO" secondAttribute="top" constant="15" id="aKw-La-KlE"/>
                                             <constraint firstAttribute="trailing" secondItem="xro-Nm-Kxq" secondAttribute="trailing" constant="16" id="bF7-4q-W3A"/>
                                             <constraint firstAttribute="trailing" secondItem="loF-dO-eJw" secondAttribute="trailing" constant="260" id="eCS-n2-Sf5"/>
                                             <constraint firstItem="ATc-UL-6WT" firstAttribute="top" secondItem="sgA-P8-obA" secondAttribute="bottom" constant="25" id="g2A-Ay-glC"/>
-                                            <constraint firstItem="loF-dO-eJw" firstAttribute="top" secondItem="IqL-9d-hHm" secondAttribute="bottom" constant="25" id="gUu-Lz-wDF"/>
                                             <constraint firstItem="gc1-S9-mHK" firstAttribute="top" secondItem="xro-Nm-Kxq" secondAttribute="bottom" constant="35" id="hau-ou-Kap"/>
                                             <constraint firstItem="R3n-em-lPe" firstAttribute="leading" secondItem="gc1-S9-mHK" secondAttribute="trailing" constant="15" id="hcq-Xy-7MR"/>
                                             <constraint firstItem="sgA-P8-obA" firstAttribute="leading" secondItem="0nh-oC-mDO" secondAttribute="leading" constant="16" id="oie-M2-XLD"/>
                                             <constraint firstAttribute="trailing" secondItem="IqL-9d-hHm" secondAttribute="trailing" constant="16" id="rBR-oA-cqM"/>
                                             <constraint firstItem="EW6-SQ-ecO" firstAttribute="leading" secondItem="0nh-oC-mDO" secondAttribute="leading" constant="16" id="uf7-qx-qda"/>
+                                            <constraint firstItem="loF-dO-eJw" firstAttribute="top" secondItem="hii-F0-EJM" secondAttribute="bottom" constant="40" id="vGT-ax-NLn"/>
                                             <constraint firstItem="H7w-ep-yff" firstAttribute="leading" secondItem="0nh-oC-mDO" secondAttribute="leading" constant="16" id="vcq-vF-QgH"/>
                                             <constraint firstItem="IqL-9d-hHm" firstAttribute="leading" secondItem="0nh-oC-mDO" secondAttribute="leading" constant="16" id="whD-LG-FsU"/>
                                         </constraints>
@@ -377,6 +393,7 @@ after 12 PM the next business day. </string>
                         <viewLayoutGuide key="safeArea" id="tg4-JA-5nm"/>
                     </view>
                     <connections>
+                        <outlet property="locationButton" destination="hii-F0-EJM" id="Bl6-Wk-6iU"/>
                         <outlet property="scrollView" destination="ny4-b3-r2e" id="0Ss-Nh-uhM"/>
                     </connections>
                 </viewController>

@@ -7,12 +7,41 @@
 //
 
 import UIKit
+import CoreLocation
 
 class RequestRideViewController: UIViewController {
 
     @IBOutlet var firstNameTextField: UITextField!
     
     @IBOutlet var scrollView: UIScrollView!
+    
+    @IBOutlet weak var locationButton: UIButton!
+    
+    let locationManager = CLLocationManager()
+    
+    @IBAction func findMyLocation() {
+        NSLog("I am in findMyLocation!")
+        
+        let status = CLLocationManager.authorizationStatus()
+        NSLog("Status: \(status.rawValue)")
+        
+        switch status {
+        case .notDetermined:
+            NSLog("I'm in notDetermined!")
+            
+            locationManager.requestWhenInUseAuthorization()
+            
+        case .restricted:
+            NSLog("I'm in restricted!")
+        case .denied:
+            NSLog("I'm in denied!")
+        case .authorizedAlways:
+            NSLog("I'm in authorizedAlways!")
+        case .authorizedWhenInUse:
+            NSLog("I'm in authorizedWhenInUse!")
+        }
+    }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -39,6 +68,9 @@ class RequestRideViewController: UIViewController {
                 
         self.title = "Request Ride"
         // Do any additional setup after loading the view.
+        
+        // round corners of Find My Location button 
+        locationButton.layer.cornerRadius = 20
         
         let center = NotificationCenter.default // sets a variable called “center” to the “default” notification center in the app, which is what iOS will use to communicate the needed information to you
         center.addObserver(self,
