@@ -32,7 +32,7 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
                 NSLog("Placemarks: \(placemarks)")
                 
                 if let placemark = placemarks?.first {
-                    NSLog("Placemark: \(placemark)")        // now we have a reabable location! 
+                    NSLog("Placemark: \(placemark)")        // now we have a readable location! 
                 }
             }
         }

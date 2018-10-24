@@ -88,6 +88,8 @@ class ViewController: UIViewController {
         
         print("destination: \(segue.destination)")
         if let navVc = segue.destination as? UINavigationController {
+            navVc.navigationBar.barStyle = .black
+            
             NSLog("As Kevin Rudolf would say... I made it!")
             print(navVc.topViewController)
             

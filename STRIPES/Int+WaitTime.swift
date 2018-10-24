@@ -42,6 +42,7 @@ extension Int {
         return conversion
     }
     
+    // for the option screen wait time (regular way will overflow the page) 
     func shortenWaitTime() -> String {
         let gregorian = Calendar(identifier: .gregorian)
         let components = DateComponents(calendar: gregorian,
