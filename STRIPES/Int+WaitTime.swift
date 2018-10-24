@@ -41,4 +41,38 @@ extension Int {
         
         return conversion
     }
+    
+    func shortenWaitTime() -> String {
+        let gregorian = Calendar(identifier: .gregorian)
+        let components = DateComponents(calendar: gregorian,
+                                        timeZone: nil,
+                                        era: nil,
+                                        year: nil,
+                                        month: nil,
+                                        day: nil,
+                                        hour: nil,
+                                        minute: self,
+                                        second: nil,
+                                        nanosecond: nil,
+                                        weekday: nil,
+                                        weekdayOrdinal: nil,
+                                        quarter: nil,
+                                        weekOfMonth: nil,
+                                        weekOfYear: nil,
+                                        yearForWeekOfYear: nil)
+        
+        let formatter = DateComponentsFormatter()
+        formatter.includesApproximationPhrase = false
+        formatter.includesTimeRemainingPhrase = false
+        formatter.allowedUnits = [.minute, .hour]
+        
+        formatter.unitsStyle = .brief
+        print(formatter.string(from: components)!)
+        
+        let conversion = formatter.string(from: components)!
+        print(conversion)
+        
+        return conversion
+    }
+    
 }

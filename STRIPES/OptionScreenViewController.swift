@@ -173,7 +173,7 @@ class OptionScreenViewController: UIViewController, UITableViewDataSource, UITab
             if estimatedWaitTime?.status == "notRunning" {
                 timeLabel.text = "Not Running"
             } else {
-                timeLabel.text = estimatedWaitTime?.waitTime.readableWaitTime() ?? "Unknown"
+                timeLabel.text = estimatedWaitTime?.waitTime.shortenWaitTime() ?? "Unknown"
             }
             timeLabel.font = UIFont.systemFont(ofSize: 20.0)
             timeLabel.textAlignment = NSTextAlignment.right

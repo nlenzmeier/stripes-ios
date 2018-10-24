@@ -9,7 +9,8 @@
 import UIKit
 import CoreLocation
 
-class RequestRideViewController: UIViewController {
+// CLLocationManagerDelegate says RequestRideViewController will be a location manager delegate
+class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet var firstNameTextField: UITextField!
     
@@ -18,6 +19,29 @@ class RequestRideViewController: UIViewController {
     @IBOutlet weak var locationButton: UIButton!
     
     let locationManager = CLLocationManager()
+    let geocoder = CLGeocoder()
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        NSLog("I made it to didUpdateLocations!")           // Yay! We're here!
+        NSLog("Location: \(locationManager.location)")      // same as locations, but this is an optional
+        NSLog("LOCATIONS: \(locations)")                    // this is not. We use this way.
+
+        // to grab the single location from our arrya of one element
+        if let location = locations.first {
+            geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
+                NSLog("Placemarks: \(placemarks)")
+                
+                if let placemark = placemarks?.first {
+                    NSLog("Placemark: \(placemark)")        // now we have a reabable location! 
+                }
+            }
+        }
+    }
+    
+    // since our location grabbing service can fail, we must account for it.
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        NSLog("I failed!")                                  // Boooo. This is bad.
+    }
     
     @IBAction func findMyLocation() {
         NSLog("I am in findMyLocation!")
@@ -25,20 +49,26 @@ class RequestRideViewController: UIViewController {
         let status = CLLocationManager.authorizationStatus()
         NSLog("Status: \(status.rawValue)")
         
+        
+        // status changes on if they "Allow" or "Deny" location services
         switch status {
         case .notDetermined:
             NSLog("I'm in notDetermined!")
             
-            locationManager.requestWhenInUseAuthorization()
+            locationManager.requestWhenInUseAuthorization()     // asking user for permission to use location services while app is in use only
             
         case .restricted:
             NSLog("I'm in restricted!")
         case .denied:
             NSLog("I'm in denied!")
         case .authorizedAlways:
-            NSLog("I'm in authorizedAlways!")
+            NSLog("I'm in authorizedAlways!")       // shouldn't need this one 
         case .authorizedWhenInUse:
-            NSLog("I'm in authorizedWhenInUse!")
+            // is access was granted, we should land here
+            
+            NSLog("I'm in authorizedWhenInUse!")    // this one should be the one that hits
+            
+            locationManager.requestLocation()
         }
     }
     
@@ -71,6 +101,9 @@ class RequestRideViewController: UIViewController {
         
         // round corners of Find My Location button 
         locationButton.layer.cornerRadius = 20
+        
+        // let locationManager know that we will handle responses
+        locationManager.delegate = self 
         
         let center = NotificationCenter.default // sets a variable called “center” to the “default” notification center in the app, which is what iOS will use to communicate the needed information to you
         center.addObserver(self,
