@@ -54,7 +54,6 @@ class OptionScreenViewController: UIViewController, UITableViewDataSource, UITab
                    "Lost and Found",
                    "Cancel Ride"]
     
-    // change these images once Jeremy finishes up icons
     let images = ["grayStripesCar30x30",
                   "comment",
                   "lost&found30X30",

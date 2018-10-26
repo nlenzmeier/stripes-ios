@@ -18,6 +18,11 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var locationButton: UIButton!
     
+    @IBOutlet weak var pickUpLocation: UITextField!
+    @IBOutlet weak var cellPhoneNumber: UITextField!
+    @IBOutlet weak var homeAddress: UITextField!
+    @IBOutlet weak var firstName: UITextField!
+    
     let locationManager = CLLocationManager()
     let geocoder = CLGeocoder()
     
@@ -32,7 +37,46 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
                 NSLog("Placemarks: \(placemarks)")
                 
                 if let placemark = placemarks?.first {
-                    NSLog("Placemark: \(placemark)")        // now we have a readable location! 
+                    NSLog("Placemark: \(placemark)")        // now we have a readable location!
+                    
+                    /*
+                     printing out placemark attributes to see what I will need for the pick up location
+                    NSLog("placemark.name: \(placemark.name)")
+                    NSLog("placemark.isoCountryCode: \(placemark.isoCountryCode)")
+                    NSLog("placemark.country: \(placemark.country)")
+                    NSLog("placemark.postalCode: \(placemark.postalCode)")
+                    NSLog("placemark.administrativeArea: \(placemark.administrativeArea)")
+                    NSLog("placemark.subAdministrativeArea: \(placemark.subAdministrativeArea)")
+                    NSLog("placemark.locality: \(placemark.locality)")
+                    NSLog("placemark.subLocality: \(placemark.subLocality)")
+                    NSLog("placemark.thoroughfare: \(placemark.thoroughfare)")
+                    NSLog("placemark.subThoroughfare: \(placemark.subThoroughfare)")
+                    NSLog("placemark.region: \(placemark.region)")
+                    NSLog("placemark.timeZone: \(placemark.timeZone)")
+                    */
+                    
+                    
+                    // array of elements we will want for the pickup location
+                    let locationElements = [placemark.name, placemark.locality, placemark.administrativeArea, placemark.postalCode]
+                    NSLog("location elements: \(locationElements)")
+                    // but this is of all optional values. We don't want that, so...
+                    
+                    let compactLocationElements = locationElements.compactMap { $0 }
+                    // compactMap returns the non-nil results within the array locationElements
+                    // $0 means what you names the first parameter, you could also do it this way:
+                    // let compactLocationElements = locationElements.compactMap { str in str }
+                    // { ... } is the anonymous function
+                    // meaning that for each element in locationElements, the closure ( { ... } ) will be called
+                    // first str is the parameter to that function
+                    // seond str is the return result from the funtion
+                    // so let's say zip is nil. we can still get the rest of the address even though we are missing an element
+                    NSLog("compact map location elements: \(compactLocationElements)")
+                    
+                    let result = compactLocationElements.joined(separator: ", ")
+                    NSLog("result: \(result)")
+                    
+                    self.pickUpLocation.text = result
+
                 }
             }
         }

@@ -393,7 +393,11 @@ after 12 PM the next business day. </string>
                         <viewLayoutGuide key="safeArea" id="tg4-JA-5nm"/>
                     </view>
                     <connections>
+                        <outlet property="cellPhoneNumber" destination="EW6-SQ-ecO" id="zco-l7-UTO"/>
+                        <outlet property="firstName" destination="ATc-UL-6WT" id="Bdo-28-JHl"/>
+                        <outlet property="homeAddress" destination="H7w-ep-yff" id="pO1-Aa-DeS"/>
                         <outlet property="locationButton" destination="hii-F0-EJM" id="Bl6-Wk-6iU"/>
+                        <outlet property="pickUpLocation" destination="IqL-9d-hHm" id="oMx-ZS-SvN"/>
                         <outlet property="scrollView" destination="ny4-b3-r2e" id="0Ss-Nh-uhM"/>
                     </connections>
                 </viewController>
