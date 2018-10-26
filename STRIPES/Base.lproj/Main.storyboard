@@ -309,8 +309,8 @@ after 12 PM the next business day. </string>
                                                     <segment title="5"/>
                                                 </segments>
                                             </segmentedControl>
-                                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="R3n-em-lPe">
-                                                <rect key="frame" x="106" y="504" width="252.33333333333331" height="46"/>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="R3n-em-lPe">
+                                                <rect key="frame" x="106.66666666666667" y="532" width="252.33333333333331" height="46"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="jRT-O5-f1W"/>
                                                 </constraints>
@@ -394,9 +394,11 @@ after 12 PM the next business day. </string>
                     </view>
                     <connections>
                         <outlet property="cellPhoneNumber" destination="EW6-SQ-ecO" id="zco-l7-UTO"/>
+                        <outlet property="dropoffs" destination="R3n-em-lPe" id="ZRt-Cj-wmd"/>
                         <outlet property="firstName" destination="ATc-UL-6WT" id="Bdo-28-JHl"/>
                         <outlet property="homeAddress" destination="H7w-ep-yff" id="pO1-Aa-DeS"/>
                         <outlet property="locationButton" destination="hii-F0-EJM" id="Bl6-Wk-6iU"/>
+                        <outlet property="passengers" destination="xro-Nm-Kxq" id="rSI-yf-xZN"/>
                         <outlet property="pickUpLocation" destination="IqL-9d-hHm" id="oMx-ZS-SvN"/>
                         <outlet property="scrollView" destination="ny4-b3-r2e" id="0Ss-Nh-uhM"/>
                     </connections>

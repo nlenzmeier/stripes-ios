@@ -23,9 +23,24 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var homeAddress: UITextField!
     @IBOutlet weak var firstName: UITextField!
     
+    @IBOutlet weak var passengers: UISegmentedControl!
+    @IBOutlet weak var dropoffs: UISegmentedControl!
+    
+    
     let locationManager = CLLocationManager()
     let geocoder = CLGeocoder()
     
+    // printing all our values to make sure we are grabbing them properly
+    func printFields() {
+        NSLog("name: \(self.firstName.text)")
+        NSLog("home address: \(self.homeAddress.text)")
+        NSLog("cell phone number: \(self.cellPhoneNumber.text)")
+        NSLog("pick up location: \(self.pickUpLocation.text)")
+        NSLog("passengers: \(self.passengers.titleForSegment(at: passengers.selectedSegmentIndex))")
+        NSLog("dropoffs: \(self.dropoffs.titleForSegment(at: dropoffs.selectedSegmentIndex))")
+    }
+    
+
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         NSLog("I made it to didUpdateLocations!")           // Yay! We're here!
         NSLog("Location: \(locationManager.location)")      // same as locations, but this is an optional
@@ -76,6 +91,10 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
                     NSLog("result: \(result)")
                     
                     self.pickUpLocation.text = result
+                    
+                    // testing to make sure we can get the text from the input fields
+                    // this will eventually be called when a submit button is created 
+                    self.printFields()
 
                 }
             }
