@@ -26,20 +26,44 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var passengers: UISegmentedControl!
     @IBOutlet weak var dropoffs: UISegmentedControl!
     
-    
     let locationManager = CLLocationManager()
     let geocoder = CLGeocoder()
     
-    // printing all our values to make sure we are grabbing them properly
-    func printFields() {
+    @IBAction func submitForm() {
+        NSLog("I hit submit!")
         NSLog("name: \(self.firstName.text)")
         NSLog("home address: \(self.homeAddress.text)")
         NSLog("cell phone number: \(self.cellPhoneNumber.text)")
         NSLog("pick up location: \(self.pickUpLocation.text)")
         NSLog("passengers: \(self.passengers.titleForSegment(at: passengers.selectedSegmentIndex))")
         NSLog("dropoffs: \(self.dropoffs.titleForSegment(at: dropoffs.selectedSegmentIndex))")
+        
+        if (self.firstName.text?.isEmpty)! {
+            NSLog("Form is invalid. Missing first name.")
+        } else if (self.homeAddress.text?.isEmpty)! {
+            NSLog("Form is invalid. Missing home address.")
+        } else if (self.cellPhoneNumber.text?.isEmpty)! {
+            NSLog("Form is invalid. Missing cell phone number.")
+        } else if (self.pickUpLocation.text?.isEmpty)! {
+            NSLog("Form is invalid. Missing pickup locaiton.")
+        } // passengers and droppoffs will never be empty
+        
+//        let form = [self.firstName.text,
+//                    self.homeAddress.text,
+//                    self.cellPhoneNumber.text,
+//                    self.pickUpLocation.text,
+//                    self.passengers.titleForSegment(at: passengers.selectedSegmentIndex),
+//                    self.dropoffs.titleForSegment(at: dropoffs.selectedSegmentIndex)
+//        ]
+//
+//        NSLog("Form is: \(form)")
+//
+//        let compactForm = form.compactMap { $0 }
+//        NSLog("Compact Form is: \(compactForm)")
+        
+        
+        NSLog("Form is completed!")
     }
-    
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         NSLog("I made it to didUpdateLocations!")           // Yay! We're here!
@@ -53,23 +77,6 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
                 
                 if let placemark = placemarks?.first {
                     NSLog("Placemark: \(placemark)")        // now we have a readable location!
-                    
-                    /*
-                     printing out placemark attributes to see what I will need for the pick up location
-                    NSLog("placemark.name: \(placemark.name)")
-                    NSLog("placemark.isoCountryCode: \(placemark.isoCountryCode)")
-                    NSLog("placemark.country: \(placemark.country)")
-                    NSLog("placemark.postalCode: \(placemark.postalCode)")
-                    NSLog("placemark.administrativeArea: \(placemark.administrativeArea)")
-                    NSLog("placemark.subAdministrativeArea: \(placemark.subAdministrativeArea)")
-                    NSLog("placemark.locality: \(placemark.locality)")
-                    NSLog("placemark.subLocality: \(placemark.subLocality)")
-                    NSLog("placemark.thoroughfare: \(placemark.thoroughfare)")
-                    NSLog("placemark.subThoroughfare: \(placemark.subThoroughfare)")
-                    NSLog("placemark.region: \(placemark.region)")
-                    NSLog("placemark.timeZone: \(placemark.timeZone)")
-                    */
-                    
                     
                     // array of elements we will want for the pickup location
                     let locationElements = [placemark.name, placemark.locality, placemark.administrativeArea, placemark.postalCode]
@@ -91,11 +98,6 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
                     NSLog("result: \(result)")
                     
                     self.pickUpLocation.text = result
-                    
-                    // testing to make sure we can get the text from the input fields
-                    // this will eventually be called when a submit button is created 
-                    self.printFields()
-
                 }
             }
         }

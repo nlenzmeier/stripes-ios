@@ -392,6 +392,13 @@ after 12 PM the next business day. </string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tg4-JA-5nm"/>
                     </view>
+                    <navigationItem key="navigationItem" id="opd-Pz-zQq">
+                        <barButtonItem key="rightBarButtonItem" title="Submit" id="2ug-G3-LpQ">
+                            <connections>
+                                <action selector="submitForm" destination="eH5-U9-Kox" id="c1f-GF-ymZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="cellPhoneNumber" destination="EW6-SQ-ecO" id="zco-l7-UTO"/>
                         <outlet property="dropoffs" destination="R3n-em-lPe" id="ZRt-Cj-wmd"/>
