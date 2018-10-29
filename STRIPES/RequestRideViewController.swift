@@ -165,7 +165,7 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
         // Do any additional setup after loading the view.
         
         // round corners of Find My Location button 
-        locationButton.layer.cornerRadius = 20
+        locationButton.layer.cornerRadius = 15
         
         // let locationManager know that we will handle responses
         locationManager.delegate = self 
