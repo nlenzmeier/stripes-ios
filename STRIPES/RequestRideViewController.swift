@@ -121,7 +121,6 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
             NSLog("I'm in notDetermined!")
             
             locationManager.requestWhenInUseAuthorization()     // asking user for permission to use location services while app is in use only
-            
         case .restricted:
             NSLog("I'm in restricted!")
         case .denied:
@@ -136,6 +135,28 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
             locationManager.requestLocation()
         }
     }
+    
+    // since we want the user to only have to press the button ONCE when the app runs the first time, we need to accommodate  that
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        NSLog("I made is to didchangeAuthorization!")
+        
+        switch status {
+        case .notDetermined:
+            NSLog("I'm in notDetermined 2!")
+        case .restricted:
+            NSLog("I'm in restricted 2!")
+        case .denied:
+            NSLog("I'm in denied 2!")
+        case .authorizedAlways:
+            NSLog("I'm in authorizedAlways 2!")
+        case .authorizedWhenInUse:
+            NSLog("I'm in authorizedWhenInUse 2!")
+            
+            locationManager.requestLocation()
+        }
+        
+    }
+    
     
     
     override func viewDidAppear(_ animated: Bool) {
@@ -168,7 +189,9 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
         locationButton.layer.cornerRadius = 15
         
         // let locationManager know that we will handle responses
-        locationManager.delegate = self 
+        locationManager.delegate = self
+        
+        // locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         
         let center = NotificationCenter.default // sets a variable called “center” to the “default” notification center in the app, which is what iOS will use to communicate the needed information to you
         center.addObserver(self,
