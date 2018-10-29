@@ -409,11 +409,67 @@ after 12 PM the next business day. </string>
                         <outlet property="passengers" destination="xro-Nm-Kxq" id="rSI-yf-xZN"/>
                         <outlet property="pickUpLocation" destination="IqL-9d-hHm" id="oMx-ZS-SvN"/>
                         <outlet property="scrollView" destination="ny4-b3-r2e" id="0Ss-Nh-uhM"/>
+                        <segue destination="I0b-s5-bHS" kind="show" identifier="Confirmation" id="L2B-RV-r3g"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hwB-U5-fSn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2981.5999999999999" y="37.684729064039409"/>
+        </scene>
+        <!--Confirmation View Controller-->
+        <scene sceneID="ULr-p0-dDY">
+            <objects>
+                <viewController id="I0b-s5-bHS" customClass="ConfirmationViewController" customModule="STRIPES" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hce-Qe-Fjv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your request have been recieved!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aOh-Un-ZRU">
+                                <rect key="frame" x="16" y="108" width="343" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dUP-N2-3Ye">
+                                <rect key="frame" x="16" y="149" width="343" height="81.333333333333314"/>
+                                <string key="text">Thank you for submitting a ride through STRIPES! We have recieved your ride request and a driver will be in touch with you soon.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ffc-gJ-HwH">
+                                <rect key="frame" x="16" y="694" width="343" height="45"/>
+                                <color key="backgroundColor" red="1" green="0.2278249647400683" blue="0.16353773346457978" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="aKz-dB-el3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Call to Cancel">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelRideCall" destination="I0b-s5-bHS" eventType="touchUpInside" id="8HV-JC-A9x"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.82352941180000006" green="0.83529411760000005" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Ffc-gJ-HwH" firstAttribute="leading" secondItem="fbV-dj-uYg" secondAttribute="leading" constant="16" id="CAY-ah-4pi"/>
+                            <constraint firstItem="aOh-Un-ZRU" firstAttribute="top" secondItem="fbV-dj-uYg" secondAttribute="top" constant="20" id="Dk9-8Y-HUj"/>
+                            <constraint firstItem="fbV-dj-uYg" firstAttribute="trailing" secondItem="Ffc-gJ-HwH" secondAttribute="trailing" constant="16" id="Foe-9V-6gZ"/>
+                            <constraint firstItem="fbV-dj-uYg" firstAttribute="bottom" secondItem="Ffc-gJ-HwH" secondAttribute="bottom" constant="39" id="RY8-b9-dxs"/>
+                            <constraint firstAttribute="trailing" secondItem="dUP-N2-3Ye" secondAttribute="trailing" constant="16" id="ZDD-30-TmV"/>
+                            <constraint firstItem="dUP-N2-3Ye" firstAttribute="top" secondItem="aOh-Un-ZRU" secondAttribute="bottom" constant="20" id="ZqH-OC-3ee"/>
+                            <constraint firstItem="fbV-dj-uYg" firstAttribute="trailing" secondItem="aOh-Un-ZRU" secondAttribute="trailing" constant="16" id="oyg-z8-8Lh"/>
+                            <constraint firstItem="dUP-N2-3Ye" firstAttribute="leading" secondItem="fbV-dj-uYg" secondAttribute="leading" constant="16" id="qdD-ba-QIS"/>
+                            <constraint firstItem="aOh-Un-ZRU" firstAttribute="leading" secondItem="fbV-dj-uYg" secondAttribute="leading" constant="16" id="raG-IQ-vGk"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="fbV-dj-uYg"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pQh-1I-7r7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3728.8000000000002" y="37.684729064039409"/>
         </scene>
         <!--Leave Comment View Controller-->
         <scene sceneID="jRj-Dr-NfE">

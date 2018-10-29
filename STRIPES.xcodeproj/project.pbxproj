@@ -25,6 +25,7 @@
 		A42B808F211D3E1600D6E9C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A42B808D211D3E1600D6E9C6 /* LaunchScreen.storyboard */; };
 		A4775FEB2124B564003E5540 /* WaitingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4775FE92124B564003E5540 /* WaitingViewController.swift */; };
 		A4775FEC2124B564003E5540 /* WaitingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4775FEA2124B564003E5540 /* WaitingViewController.xib */; };
+		A4F439162187CB7600888763 /* ConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F439152187CB7600888763 /* ConfirmationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		A42B8090211D3E1600D6E9C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A4775FE92124B564003E5540 /* WaitingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingViewController.swift; sourceTree = "<group>"; };
 		A4775FEA2124B564003E5540 /* WaitingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WaitingViewController.xib; sourceTree = "<group>"; };
+		A4F439152187CB7600888763 /* ConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 				A40ADE7621516E61009363D3 /* RequestRideViewController.swift */,
 				A412D6EC2152B0F5000E75DC /* LeaveCommentViewController.swift */,
 				A412D6EE2152B273000E75DC /* LostAndFoundViewController.swift */,
+				A4F439152187CB7600888763 /* ConfirmationViewController.swift */,
 			);
 			path = STRIPES;
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 				A40ADE7421502AA7009363D3 /* ErrorViewController.swift in Sources */,
 				A412D6EF2152B273000E75DC /* LostAndFoundViewController.swift in Sources */,
 				A422DC452146CB4A00321D4D /* WaitTimeViewController.swift in Sources */,
+				A4F439162187CB7600888763 /* ConfirmationViewController.swift in Sources */,
 				A4775FEB2124B564003E5540 /* WaitingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -31,13 +31,16 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBAction func submitForm() {
         NSLog("I hit submit!")
+        
+        /*
         NSLog("name: \(self.firstName.text)")
         NSLog("home address: \(self.homeAddress.text)")
         NSLog("cell phone number: \(self.cellPhoneNumber.text)")
         NSLog("pick up location: \(self.pickUpLocation.text)")
         NSLog("passengers: \(self.passengers.titleForSegment(at: passengers.selectedSegmentIndex))")
         NSLog("dropoffs: \(self.dropoffs.titleForSegment(at: dropoffs.selectedSegmentIndex))")
-        
+        */
+ 
         if (self.firstName.text?.isEmpty)! {
             NSLog("Form is invalid. Missing first name.")
         } else if (self.homeAddress.text?.isEmpty)! {
@@ -48,18 +51,36 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
             NSLog("Form is invalid. Missing pickup locaiton.")
         } // passengers and droppoffs will never be empty
         
-//        let form = [self.firstName.text,
-//                    self.homeAddress.text,
-//                    self.cellPhoneNumber.text,
-//                    self.pickUpLocation.text,
-//                    self.passengers.titleForSegment(at: passengers.selectedSegmentIndex),
-//                    self.dropoffs.titleForSegment(at: dropoffs.selectedSegmentIndex)
-//        ]
-//
-//        NSLog("Form is: \(form)")
-//
-//        let compactForm = form.compactMap { $0 }
-//        NSLog("Compact Form is: \(compactForm)")
+        var form : [String: Any] = [:]
+        
+        if let firstName = self.firstName.text {
+            form["firstName"] = firstName
+        }
+        
+        if let homeAddress = self.homeAddress.text {
+            form["homeAddress"] = homeAddress
+        }
+        
+        if let cellPhoneNumber = self.cellPhoneNumber.text {
+            form["cellPhoneNumber"] = cellPhoneNumber
+        }
+        
+        if let pickUpLocation = self.pickUpLocation.text {
+            form["pickUpLocation"] = pickUpLocation
+        }
+        
+        if let passengers = self.passengers.titleForSegment(at: passengers.selectedSegmentIndex) {
+            form["passengers"] = passengers
+        }
+        
+        if let dropoffs = self.dropoffs.titleForSegment(at: dropoffs.selectedSegmentIndex) {
+            form["dropoffs"] = dropoffs
+        }
+        
+        let jsonData = try! JSONSerialization.data(withJSONObject: form, options: [])
+        let jsonString = String(data: jsonData, encoding: .utf8)!
+        print("jsonString is: \n")
+        print(jsonString)
         
         
         NSLog("Form is completed!")
@@ -109,6 +130,9 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     @IBAction func findMyLocation() {
+        
+        locationManager.delegate = self
+        
         NSLog("I am in findMyLocation!")
         
         let status = CLLocationManager.authorizationStatus()
@@ -189,9 +213,21 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
         locationButton.layer.cornerRadius = 15
         
         // let locationManager know that we will handle responses
-        locationManager.delegate = self
+        // DO NOT SET HERE! It will automatically fetch and display location as soon as "Request Ride" is selected
+        // locationManager.delegate = self
         
-        // locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        /*
+         if we had more time, and perhaps more developers, we could ask the first time and it would be slow
+         but the second and so forth times we would actually cache the current location from app's startup BECAUSE they alread granted
+         us access to their location
+         and IF the form is touched between X number of secods (for good accuracy), we'd just use the cached value for the form,
+         making the button APPEAR to be faster than it can actually ever be
+         
+         but for now, this will have to do for accuracy (and time)
+         
+         "the elevators are too slow"
+        */
+        locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         
         let center = NotificationCenter.default // sets a variable called “center” to the “default” notification center in the app, which is what iOS will use to communicate the needed information to you
         center.addObserver(self,
