@@ -41,7 +41,27 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
         NSLog("dropoffs: \(self.dropoffs.titleForSegment(at: dropoffs.selectedSegmentIndex))")
         */
  
-        
+        // TODO: think of a way to better organize this because this will always be the first error message when an empty form is submitted and doesn't feel right
+        if let cellPhoneNumber = self.cellPhoneNumber.text {
+            let digits: Set<Character> = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
+            
+            var counter = 0                 // counts valid characters in the cell phone number string
+            for num in cellPhoneNumber {
+                print("Letter: \(num)")
+                
+                if digits.contains(num) {
+                    counter += 1
+                }
+            }
+            
+            print("The number of valid digits is: \(counter)")
+            
+            if (counter == 10 || counter == 11) {
+                NSLog("We're valid!")
+            } else {
+                displayPhoneErrorAlert()
+            }
+        }
         
         if (self.firstName.text?.isEmpty)! {
             NSLog("Form is invalid. Missing first name.")
@@ -49,7 +69,7 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
         } else if (self.homeAddress.text?.isEmpty)! {
             NSLog("Form is invalid. Missing home address.")
             displayErrorAlert()
-        } else if (self.cellPhoneNumber.text?.isEmpty)! {
+        }else if (self.cellPhoneNumber.text?.isEmpty)! {
             NSLog("Form is invalid. Missing cell phone number.")
             displayErrorAlert()
         } else if (self.pickUpLocation.text?.isEmpty)! {
@@ -69,7 +89,7 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
             }
             
             if let cellPhoneNumber = self.cellPhoneNumber.text {
-                form["cellPhoneNumber"] = cellPhoneNumber
+                    form["cellPhoneNumber"] = cellPhoneNumber
             }
             
             if let pickUpLocation = self.pickUpLocation.text {
@@ -97,6 +117,17 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
         
     }
     
+    // error message that you must have a phone number between 10 and 11
+    @IBAction func displayPhoneErrorAlert() {
+        let alertController = UIAlertController(title: "Error",
+                                                message: "You must have a phone number with 10 to 11 numbers.",
+                                                preferredStyle: UIAlertControllerStyle.alert)
+        
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    // generic error message for everything else
     @IBAction func displayErrorAlert() {
         let alertController = UIAlertController(title: "Error",
                                                 message: "You must answer all fields to request a ride.",
