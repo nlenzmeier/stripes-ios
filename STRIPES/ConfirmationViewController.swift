@@ -33,6 +33,8 @@ class ConfirmationViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         cancelButton.layer.cornerRadius = 20
+        
+        navigationController?.removeAllMiddleViewControllers()
     }
     
 

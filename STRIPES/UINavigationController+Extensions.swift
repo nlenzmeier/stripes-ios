@@ -12,7 +12,7 @@ import UIKit
 extension UINavigationController {
     
     // remove all middle view controllers, leaving only the first and the last
-    func removeallMiddleViewControllers() {
+    func removeAllMiddleViewControllers() {
         // this array is in order. Element 0 is the root view controller (the first one).
         // attempt to get the first and last elements. (make sure the count >= 2 or else first and last will be the same, would isn't what we want)
         if viewControllers.count >= 2,
