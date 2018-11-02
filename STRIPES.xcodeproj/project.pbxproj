@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A405D552218A4D62003CA1AD /* UINavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A405D551218A4D62003CA1AD /* UINavigationController+Extensions.swift */; };
 		A40ADE7421502AA7009363D3 /* ErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40ADE7221502AA7009363D3 /* ErrorViewController.swift */; };
 		A40ADE7521502AA8009363D3 /* ErrorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A40ADE7321502AA7009363D3 /* ErrorViewController.xib */; };
 		A40ADE7721516E61009363D3 /* RequestRideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40ADE7621516E61009363D3 /* RequestRideViewController.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A405D551218A4D62003CA1AD /* UINavigationController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extensions.swift"; sourceTree = "<group>"; };
 		A40ADE7221502AA7009363D3 /* ErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewController.swift; sourceTree = "<group>"; };
 		A40ADE7321502AA7009363D3 /* ErrorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ErrorViewController.xib; sourceTree = "<group>"; };
 		A40ADE7621516E61009363D3 /* RequestRideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestRideViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				A412D6EC2152B0F5000E75DC /* LeaveCommentViewController.swift */,
 				A412D6EE2152B273000E75DC /* LostAndFoundViewController.swift */,
 				A4F439152187CB7600888763 /* ConfirmationViewController.swift */,
+				A405D551218A4D62003CA1AD /* UINavigationController+Extensions.swift */,
 			);
 			path = STRIPES;
 			sourceTree = "<group>";
@@ -193,6 +196,7 @@
 				A422DC452146CB4A00321D4D /* WaitTimeViewController.swift in Sources */,
 				A4F439162187CB7600888763 /* ConfirmationViewController.swift in Sources */,
 				A4775FEB2124B564003E5540 /* WaitingViewController.swift in Sources */,
+				A405D552218A4D62003CA1AD /* UINavigationController+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -41,49 +41,69 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
         NSLog("dropoffs: \(self.dropoffs.titleForSegment(at: dropoffs.selectedSegmentIndex))")
         */
  
+        
+        
         if (self.firstName.text?.isEmpty)! {
             NSLog("Form is invalid. Missing first name.")
+            displayErrorAlert()
         } else if (self.homeAddress.text?.isEmpty)! {
             NSLog("Form is invalid. Missing home address.")
+            displayErrorAlert()
         } else if (self.cellPhoneNumber.text?.isEmpty)! {
             NSLog("Form is invalid. Missing cell phone number.")
+            displayErrorAlert()
         } else if (self.pickUpLocation.text?.isEmpty)! {
             NSLog("Form is invalid. Missing pickup locaiton.")
-        } // passengers and droppoffs will never be empty
-        
-        var form : [String: Any] = [:]
-        
-        if let firstName = self.firstName.text {
-            form["firstName"] = firstName
+            displayErrorAlert()
+        } else {
+            // passengers and droppoffs will never be empty
+            
+            var form : [String: Any] = [:]
+            
+            if let firstName = self.firstName.text {
+                form["firstName"] = firstName
+            }
+            
+            if let homeAddress = self.homeAddress.text {
+                form["homeAddress"] = homeAddress
+            }
+            
+            if let cellPhoneNumber = self.cellPhoneNumber.text {
+                form["cellPhoneNumber"] = cellPhoneNumber
+            }
+            
+            if let pickUpLocation = self.pickUpLocation.text {
+                form["pickUpLocation"] = pickUpLocation
+            }
+            
+            if let passengers = self.passengers.titleForSegment(at: passengers.selectedSegmentIndex) {
+                form["passengers"] = passengers
+            }
+            
+            if let dropoffs = self.dropoffs.titleForSegment(at: dropoffs.selectedSegmentIndex) {
+                form["dropoffs"] = dropoffs
+            }
+            
+            let jsonData = try! JSONSerialization.data(withJSONObject: form, options: [])
+            let jsonString = String(data: jsonData, encoding: .utf8)!
+            print("jsonString is: \n")
+            print(jsonString)
+            
+            
+            NSLog("Form is completed!")
+            performSegue(withIdentifier: "Confirmation", sender: self)
         }
         
-        if let homeAddress = self.homeAddress.text {
-            form["homeAddress"] = homeAddress
-        }
         
-        if let cellPhoneNumber = self.cellPhoneNumber.text {
-            form["cellPhoneNumber"] = cellPhoneNumber
-        }
+    }
+    
+    @IBAction func displayErrorAlert() {
+        let alertController = UIAlertController(title: "Error",
+                                                message: "You must answer all fields to request a ride.",
+                                                preferredStyle: UIAlertControllerStyle.alert)
         
-        if let pickUpLocation = self.pickUpLocation.text {
-            form["pickUpLocation"] = pickUpLocation
-        }
-        
-        if let passengers = self.passengers.titleForSegment(at: passengers.selectedSegmentIndex) {
-            form["passengers"] = passengers
-        }
-        
-        if let dropoffs = self.dropoffs.titleForSegment(at: dropoffs.selectedSegmentIndex) {
-            form["dropoffs"] = dropoffs
-        }
-        
-        let jsonData = try! JSONSerialization.data(withJSONObject: form, options: [])
-        let jsonString = String(data: jsonData, encoding: .utf8)!
-        print("jsonString is: \n")
-        print(jsonString)
-        
-        
-        NSLog("Form is completed!")
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+        present(alertController, animated: true, completion: nil)
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

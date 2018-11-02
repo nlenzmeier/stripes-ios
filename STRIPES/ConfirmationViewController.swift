@@ -10,10 +10,20 @@ import UIKit
 
 class ConfirmationViewController: UIViewController {
 
+    @IBOutlet weak var cancelButton: UIButton!
     
     @IBAction func cancelRideCall() {
         // Alert to call STRIPES
+        
+        #if targetEnvironment(simulator)
+        
+        print("I would be calling STRIPES right now on a device")
+        
+        #else
+        
         UIApplication.shared.open(URL(string: "tel:573-442-9672")!, options: [:], completionHandler: nil)
+        
+        #endif
     }
     
     override func viewDidLoad() {
@@ -21,6 +31,8 @@ class ConfirmationViewController: UIViewController {
 
         self.title = "Confirmation"
         // Do any additional setup after loading the view.
+        
+        cancelButton.layer.cornerRadius = 20
     }
     
 

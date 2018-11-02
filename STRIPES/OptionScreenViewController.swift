@@ -13,7 +13,7 @@ class OptionScreenViewController: UIViewController, UITableViewDataSource, UITab
     @IBOutlet var tableView: UITableView!
     
     var estimatedWaitTime: EstimatedWaitTime?
-    
+        
     func acceptData(estimatedWaitTime: EstimatedWaitTime) {
         self.estimatedWaitTime = estimatedWaitTime
         
