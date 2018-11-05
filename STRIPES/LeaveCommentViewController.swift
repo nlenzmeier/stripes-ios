@@ -42,7 +42,7 @@ class LeaveCommentViewController: UIViewController {
     // generic error message for everything else
     @IBAction func displayErrorAlert() {
         let alertController = UIAlertController(title: "Error",
-                                                message: "Error! Cannot send empty comment.",
+                                                message: "Comment box cannot be empty.",
                                                 preferredStyle: UIAlertControllerStyle.alert)
         
         alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
