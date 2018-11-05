@@ -120,7 +120,7 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
             }
             
             let jsonData = try! JSONSerialization.data(withJSONObject: form, options: [])
-            let jsonString = String(data: jsonData, encoding: .utf8)!
+            let jsonString = String(data: jsonData, encoding: .utf8)!       // Sarah and/or Jeremy: this is your jsonObject
             print("jsonString is: \n")
             print(jsonString)
             

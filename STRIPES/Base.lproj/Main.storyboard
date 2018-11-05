@@ -424,14 +424,14 @@ after 12 PM the next business day. </string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your request have been recieved!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aOh-Un-ZRU">
-                                <rect key="frame" x="16" y="108" width="343" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your request has been recieved!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aOh-Un-ZRU">
+                                <rect key="frame" x="16" y="108" width="343" height="20.333333333333343"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dUP-N2-3Ye">
-                                <rect key="frame" x="16" y="149" width="343" height="81.333333333333314"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dUP-N2-3Ye">
+                                <rect key="frame" x="16" y="148.33333333333334" width="343" height="81.333333333333343"/>
                                 <string key="text">Thank you for submitting a ride through STRIPES! We have recieved your ride request and a driver will be in touch with you soon.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -482,27 +482,21 @@ after 12 PM the next business day. </string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6DN-gb-YKn">
-                                <rect key="frame" x="16" y="108" width="343" height="61"/>
-                                <string key="text">We value your feedback and would
-love to hear how we can make your
-next ride better.</string>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We value your feedback and would love to hear how we can make your next ride better." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6DN-gb-YKn">
+                                <rect key="frame" x="16" y="108.00000000000001" width="343" height="40.666666666666671"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please leave your comments in the box below. This is completely anonymous." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZz-Wk-xEc">
-                                <rect key="frame" x="16" y="189" width="343" height="40.666666666666657"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please leave your comments in the box below. This is completely anonymous." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZz-Wk-xEc">
+                                <rect key="frame" x="16" y="168.66666666666666" width="343" height="40.666666666666657"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2VN-8j-77u">
-                                <rect key="frame" x="16" y="249.66666666666663" width="343" height="130"/>
+                                <rect key="frame" x="16" y="229" width="343" height="549"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="130" id="Ec9-K0-QVD"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -515,19 +509,65 @@ next ride better.</string>
                             <constraint firstItem="CZz-Wk-xEc" firstAttribute="top" secondItem="6DN-gb-YKn" secondAttribute="bottom" constant="20" id="VsA-sw-Imn"/>
                             <constraint firstItem="6DN-gb-YKn" firstAttribute="top" secondItem="eKY-z5-SfY" secondAttribute="top" constant="20" id="aym-sa-3NB"/>
                             <constraint firstItem="eKY-z5-SfY" firstAttribute="trailing" secondItem="2VN-8j-77u" secondAttribute="trailing" constant="16" id="d4N-kd-Lo5"/>
+                            <constraint firstItem="eKY-z5-SfY" firstAttribute="bottom" secondItem="2VN-8j-77u" secondAttribute="bottom" id="fh8-wn-I0S"/>
                             <constraint firstItem="eKY-z5-SfY" firstAttribute="trailing" secondItem="CZz-Wk-xEc" secondAttribute="trailing" constant="16" id="gsf-Tb-fpq"/>
                             <constraint firstItem="eKY-z5-SfY" firstAttribute="trailing" secondItem="6DN-gb-YKn" secondAttribute="trailing" constant="16" id="q4B-FK-m2b"/>
                             <constraint firstItem="2VN-8j-77u" firstAttribute="top" secondItem="CZz-Wk-xEc" secondAttribute="bottom" constant="20" id="uf1-26-LsJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eKY-z5-SfY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="rZa-dT-aGb">
+                        <barButtonItem key="rightBarButtonItem" title="Send" id="VH2-Xo-V3M">
+                            <connections>
+                                <action selector="sendComment" destination="PsQ-RT-IAv" id="oML-PD-ghj"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="commentBox" destination="2VN-8j-77u" id="ozX-0p-PyA"/>
+                        <segue destination="DCg-XK-pUb" kind="show" identifier="Comment Confirmation" id="hUr-bh-tu0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8pn-GN-zes" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2981.5999999999999" y="738.91625615763553"/>
+        </scene>
+        <!--Comment Confirmation View Controller-->
+        <scene sceneID="MKj-C2-30G">
+            <objects>
+                <viewController id="DCg-XK-pUb" customClass="CommentConfirmationViewController" customModule="STRIPES" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="E25-DV-XkS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thank you for your feedback. We value what you have to say and one of our executive members will read this shortly." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="th4-F0-zo7">
+                                <rect key="frame" x="16" y="148.33333333333334" width="343" height="61"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your comment has been received!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i5N-lR-ayO">
+                                <rect key="frame" x="16" y="108" width="343" height="20.333333333333343"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.82391482591629028" green="0.83497017621994019" blue="0.86252135038375854" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="i5N-lR-ayO" firstAttribute="top" secondItem="HvU-RC-5u9" secondAttribute="top" constant="20" id="6Uw-wD-acw"/>
+                            <constraint firstItem="th4-F0-zo7" firstAttribute="top" secondItem="i5N-lR-ayO" secondAttribute="bottom" constant="20" id="Gho-of-1zj"/>
+                            <constraint firstItem="th4-F0-zo7" firstAttribute="leading" secondItem="HvU-RC-5u9" secondAttribute="leading" constant="16" id="Q3f-AQ-gSg"/>
+                            <constraint firstItem="HvU-RC-5u9" firstAttribute="trailing" secondItem="th4-F0-zo7" secondAttribute="trailing" constant="16" id="XVx-pn-HYp"/>
+                            <constraint firstItem="HvU-RC-5u9" firstAttribute="trailing" secondItem="i5N-lR-ayO" secondAttribute="trailing" constant="16" id="nT4-xW-gHH"/>
+                            <constraint firstItem="i5N-lR-ayO" firstAttribute="leading" secondItem="HvU-RC-5u9" secondAttribute="leading" constant="16" id="y0I-jP-rzA"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="HvU-RC-5u9"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lx2-Ph-fH2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3728.8000000000002" y="738.91625615763553"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="48q-C9-jsK">
