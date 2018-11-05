@@ -47,7 +47,7 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
             
             var counter = 0                 // counts valid characters in the cell phone number string
             for num in cellPhoneNumber {
-                print("Letter: \(num)")
+                // print("Letter: \(num)")
                 
                 if digits.contains(num) {
                     counter += 1
@@ -61,6 +61,21 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
             } else {
                 displayPhoneErrorAlert()
             }
+        }
+        
+        if let homeAddress = self.homeAddress.text, let pickUpLocation = self.pickUpLocation.text {
+            let homeArray = homeAddress.components(separatedBy: ",")
+            let pickUpArray = pickUpLocation.components(separatedBy: ",")
+            
+            print(homeArray)
+            print(pickUpArray)
+            
+            // doesn't make sense to have the pick up the same as the dropoff
+            // since we only pickup/drop off in CoMo we shouldn't have any matching addresses
+            if homeArray.first == pickUpArray.first {
+                    displaySameAddressAlert()
+            }
+            
         }
         
         if (self.firstName.text?.isEmpty)! {
@@ -116,6 +131,18 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
         
         
     }
+    
+    
+    // error message that you must have two different addresses
+    @IBAction func displaySameAddressAlert() {
+        let alertController = UIAlertController(title: "Error",
+                                                message: "Your pickup location cannot be the same as your home address.",
+                                                preferredStyle: UIAlertControllerStyle.alert)
+        
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+        present(alertController, animated: true, completion: nil)
+    }
+    
     
     // error message that you must have a phone number between 10 and 11
     @IBAction func displayPhoneErrorAlert() {
