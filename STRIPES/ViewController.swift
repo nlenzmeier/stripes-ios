@@ -35,8 +35,8 @@ class ViewController: UIViewController {
         let waitingVc = WaitingViewController()
         
         // add view controller to parent view controller
-        addChildViewController(waitingVc)
-        waitingVc.didMove(toParentViewController: self)
+        addChild(waitingVc)
+        waitingVc.didMove(toParent: self)
         
         // add view to parent view
         let waitingView = waitingVc.view!   // similar to dragging out a view from the xcode view library panel
@@ -127,19 +127,19 @@ class ViewController: UIViewController {
         // Part A: Remove Waiting View and View Controller
         
         // step 1: prepare for waiting view removal
-        waitingVc?.willMove(toParentViewController: nil)
+        waitingVc?.willMove(toParent: nil)
         // step 2: remove waiting view
         waitingVc?.view.removeFromSuperview()
         // step 3: remove waiting view controller
-        waitingVc?.removeFromParentViewController()
+        waitingVc?.removeFromParent()
         
         // Part B: Add Wait Time view and View Controller
         // (NOTE: This code is idental to how we added the first view controller)
         
         
         // add view controller to parent view controller
-        addChildViewController(viewController)
-        viewController.didMove(toParentViewController: self)
+        addChild(viewController)
+        viewController.didMove(toParent: self)
         
         // add view to parent view
         let waitTimeView = viewController.view!   // similar to dragging out a view from the xcode view library panel

@@ -21,7 +21,7 @@ class ConfirmationViewController: UIViewController {
         
         #else
         
-        UIApplication.shared.open(URL(string: "tel:573-442-9672")!, options: [:], completionHandler: nil)
+        UIApplication.shared.open(URL(string: "tel:573-442-9672")!, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
         
         #endif
     }
@@ -49,3 +49,9 @@ class ConfirmationViewController: UIViewController {
     */
 
 }
+
+// Helper function inserted by Swift 4.2 migrator.
+//fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+//    print("I'm in the new function!")
+//    return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
+//}

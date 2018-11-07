@@ -137,9 +137,9 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func displaySameAddressAlert() {
         let alertController = UIAlertController(title: "Error",
                                                 message: "Your pickup location cannot be the same as your home address.",
-                                                preferredStyle: UIAlertControllerStyle.alert)
+                                                preferredStyle: UIAlertController.Style.alert)
         
-        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default, handler: nil))
         present(alertController, animated: true, completion: nil)
     }
     
@@ -148,9 +148,9 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func displayPhoneErrorAlert() {
         let alertController = UIAlertController(title: "Error",
                                                 message: "You must have a phone number with 10 to 11 numbers.",
-                                                preferredStyle: UIAlertControllerStyle.alert)
+                                                preferredStyle: UIAlertController.Style.alert)
         
-        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default, handler: nil))
         present(alertController, animated: true, completion: nil)
     }
     
@@ -158,9 +158,9 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func displayErrorAlert() {
         let alertController = UIAlertController(title: "Error",
                                                 message: "You must answer all fields to request a ride.",
-                                                preferredStyle: UIAlertControllerStyle.alert)
+                                                preferredStyle: UIAlertController.Style.alert)
         
-        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default, handler: nil))
         present(alertController, animated: true, completion: nil)
     }
 
@@ -270,7 +270,7 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
         
         guard   // guard means "make sure these items exist"
             let userInfo = notification.userInfo,
-            let frameEnd = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect else { return }
+            let frameEnd = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
         
         NSLog("frameEnd: \(frameEnd)")
         
@@ -310,7 +310,7 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
         let center = NotificationCenter.default // sets a variable called “center” to the “default” notification center in the app, which is what iOS will use to communicate the needed information to you
         center.addObserver(self,
                            selector: #selector(keyboardWillShow),
-                           name: NSNotification.Name.UIKeyboardWillShow,
+                           name: UIResponder.keyboardWillShowNotification,
                            object: nil)
         /*
          So the way you use a NotificationCenter object is you “observe” broadcasts. It’s like tuning into a cable station.

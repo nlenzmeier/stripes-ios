@@ -43,9 +43,9 @@ class LeaveCommentViewController: UIViewController {
     @IBAction func displayErrorAlert() {
         let alertController = UIAlertController(title: "Error",
                                                 message: "Comment box cannot be empty.",
-                                                preferredStyle: UIAlertControllerStyle.alert)
+                                                preferredStyle: UIAlertController.Style.alert)
         
-        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default, handler: nil))
         present(alertController, animated: true, completion: nil)
     }
     
@@ -58,7 +58,7 @@ class LeaveCommentViewController: UIViewController {
         
         guard   // guard means "make sure these items exist"
             let userInfo = notification.userInfo,
-            let frameEnd = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect else { return }
+            let frameEnd = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
         
         NSLog("frameEnd: \(frameEnd)")
         
@@ -82,7 +82,7 @@ class LeaveCommentViewController: UIViewController {
         let center = NotificationCenter.default // sets a variable called “center” to the “default” notification center in the app, which is what iOS will use to communicate the needed information to you
         center.addObserver(self,
                            selector: #selector(keyboardWillShow),
-                           name: NSNotification.Name.UIKeyboardWillShow,
+                           name: UIResponder.keyboardWillShowNotification,
                            object: nil)
     }
     
