@@ -275,6 +275,7 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
         NSLog("frameEnd: \(frameEnd)")
         
         scrollView.contentInset.bottom = frameEnd.height
+        // scrollView.contentInset.bottom = 500
     }
     
     deinit {
@@ -283,7 +284,9 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
+        scrollView.contentInsetAdjustmentBehavior = .never
+        
         self.title = "Request Ride"
         // Do any additional setup after loading the view.
         
