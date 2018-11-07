@@ -17,6 +17,7 @@ class CommentConfirmationViewController: UIViewController {
         
         self.title = "Comment Confirmation"
         
+        // this flashes "back" before presenting "STRIPES" ... just something that we have to put up with
         navigationController?.removeAllMiddleViewControllers()
     }
     

@@ -34,6 +34,7 @@ class ConfirmationViewController: UIViewController {
         
         cancelButton.layer.cornerRadius = 20
         
+        // this flashes "back" before presenting "STRIPES" ... just something that we have to put up with
         navigationController?.removeAllMiddleViewControllers()
     }
     
