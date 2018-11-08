@@ -17,7 +17,7 @@ class LeaveCommentViewController: UIViewController {
     @IBAction func sendComment() {
         NSLog("I hit submit!")
 
-        NSLog("comment: \(commentBox.text)")
+        // NSLog("comment: \(timeCellcommentBox.text)")
         
         if(commentBox.text.isEmpty) {
             NSLog("Comment box is empty.")
@@ -54,7 +54,7 @@ class LeaveCommentViewController: UIViewController {
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
-        NSLog("UserInfo: \(notification.userInfo)")
+        // NSLog("UserInfo: \(timeCellnotification.userInfo)")
         
         guard   // guard means "make sure these items exist"
             let userInfo = notification.userInfo,

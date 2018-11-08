@@ -166,16 +166,16 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         NSLog("I made it to didUpdateLocations!")           // Yay! We're here!
-        NSLog("Location: \(locationManager.location)")      // same as locations, but this is an optional
+        NSLog("Location: \(locationManager.location ?? CLLocation())")      // same as locations, but this is an optional
         NSLog("LOCATIONS: \(locations)")                    // this is not. We use this way.
 
         // to grab the single location from our arrya of one element
         if let location = locations.first {
             geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
-                NSLog("Placemarks: \(placemarks)")
+                NSLog("Placemarks: \(String(describing: placemarks))")
                 
                 if let placemark = placemarks?.first {
-                    NSLog("Placemark: \(placemark)")        // now we have a readable location!
+                    NSLog("Placemark: \(String(describing: placemark))")        // now we have a readable location!
                     
                     // array of elements we will want for the pickup location
                     let locationElements = [placemark.name, placemark.locality, placemark.administrativeArea, placemark.postalCode]
@@ -266,7 +266,7 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
-        NSLog("UserInfo: \(notification.userInfo)")
+        NSLog("UserInfo: \(String(describing: notification.userInfo))")
         
         guard   // guard means "make sure these items exist"
             let userInfo = notification.userInfo,

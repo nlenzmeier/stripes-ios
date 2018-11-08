@@ -70,7 +70,7 @@ class OptionScreenViewController: UIViewController, UITableViewDataSource, UITab
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         
-        let timeCell = tableView.dequeueReusableCell(withIdentifier: "WaitTimeCell", for: indexPath)
+        // let timeCell = tableView.dequeueReusableCell(withIdentifier: "WaitTimeCell", for: indexPath)
         
         // checking for the "cancel ride" option since that does not have a disclosure indicator
         if indexPath.row == 3 {

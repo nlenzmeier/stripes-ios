@@ -84,14 +84,14 @@ class ViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         NSLog("*** MADE IT HERE ***")
-        NSLog("EWT: \(estimatedWaitTime)")
+        NSLog("EWT: \(String(describing: estimatedWaitTime))")
         
         print("destination: \(segue.destination)")
         if let navVc = segue.destination as? UINavigationController {
             navVc.navigationBar.barStyle = .black
             
             NSLog("As Kevin Rudolf would say... I made it!")
-            print(navVc.topViewController)
+            print(String(describing: navVc.topViewController))
             
             if let optVc = navVc.topViewController as? OptionScreenViewController {
                 NSLog("As Kevin Rudolf would say... I made it X 2!")
