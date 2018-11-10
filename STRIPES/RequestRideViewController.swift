@@ -31,32 +31,11 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBAction func submitForm() {
         NSLog("I hit submit!")
-        
-        /*
-        NSLog("name: \(self.firstName.text)")
-        NSLog("home address: \(self.homeAddress.text)")
-        NSLog("cell phone number: \(self.cellPhoneNumber.text)")
-        NSLog("pick up location: \(self.pickUpLocation.text)")
-        NSLog("passengers: \(self.passengers.titleForSegment(at: passengers.selectedSegmentIndex))")
-        NSLog("dropoffs: \(self.dropoffs.titleForSegment(at: dropoffs.selectedSegmentIndex))")
-        */
  
         // TODO: think of a way to better organize this because this will always be the first error message when an empty form is submitted and doesn't feel right
         if let cellPhoneNumber = self.cellPhoneNumber.text {
-            let digits: Set<Character> = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
-            
-            var counter = 0                 // counts valid characters in the cell phone number string
-            for num in cellPhoneNumber {
-                // print("Letter: \(num)")
-                
-                if digits.contains(num) {
-                    counter += 1
-                }
-            }
-            
-            print("The number of valid digits is: \(counter)")
-            
-            if (counter == 10 || counter == 11) {
+            // if there is a 10 or 11 returned from cellPhoneNumber.digitCount() then do this... 
+            if [10, 11].contains((cellPhoneNumber.digitCount())) {
                 NSLog("We're valid!")
             } else {
                 displayPhoneErrorAlert()
