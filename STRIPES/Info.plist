@@ -41,5 +41,34 @@
 	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>The app wants to look up your location to summon a ride.</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>http://104.248.54.97/api/Rides</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+				<key>NSIncludeSubDomans</key>
+				<true/>
+			</dict>
+			<key>http://104.248.54.97/api/WaitTime</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+				<key>NSIncludeSubDomans</key>
+				<true/>
+			</dict>
+			<key>http://104.248.54.97/api/LeaveComment</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+				<key>NSIncludeSubDomans</key>
+				<true/>
+			</dict>
+		</dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>

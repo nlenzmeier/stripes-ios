@@ -31,9 +31,32 @@ class LeaveCommentViewController: UIViewController {
             }
             
             let jsonData = try! JSONSerialization.data(withJSONObject: form, options: [])
-            let jsonString = String(data: jsonData, encoding: .utf8)!       // Sarah and/or Jeremy: this is your jsonObject
-            print("jsonString is: \n")
-            print(jsonString)
+            //let jsonString = String(data: jsonData, encoding: .utf8)!       // Sarah and/or Jeremy: this is your jsonObject
+            //print("jsonString is: \n" + jsonString)
+            
+            // create POST request
+            let url = URL(string: "http://104.248.54.97/api/LeaveComment")!
+            var request = URLRequest(url: url)
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.httpMethod = "POST"
+            
+            // insert json data to the request
+            request.httpBody = jsonData
+            
+            let session = URLSession.shared
+            session.dataTask(with: request) { (data, response, error ) in
+                if let response = response {
+                    print(response)
+                }
+                if let data = data {
+                    do {
+                        let json = try JSONSerialization.jsonObject(with: data, options: [])
+                        print(json)
+                    } catch {
+                        print(error)
+                    }
+                }
+            }.resume()
             
             performSegue(withIdentifier: "Comment Confirmation", sender: self)
         }

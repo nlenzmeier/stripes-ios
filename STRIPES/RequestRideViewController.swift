@@ -86,10 +86,6 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
                     form["cellPhoneNumber"] = cellPhoneNumber
             }
             
-            if let pickUpLocation = self.pickUpLocation.text {
-                form["pickUpLocation"] = pickUpLocation
-            }
-            
             if let passengers = self.passengers.titleForSegment(at: passengers.selectedSegmentIndex) {
                 form["passengers"] = passengers
             }
@@ -98,11 +94,40 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
                 form["dropoffs"] = dropoffs
             }
             
-            let jsonData = try! JSONSerialization.data(withJSONObject: form, options: [])
-            let jsonString = String(data: jsonData, encoding: .utf8)!       // Sarah and/or Jeremy: this is your jsonObject
-            print("jsonString is: \n")
-            print(jsonString)
+            if let pickUpLocation = self.pickUpLocation.text {
+                form["pickUpLocation"] = pickUpLocation
+            }
             
+            guard let jsonData = try? JSONSerialization.data(withJSONObject: form, options: []) else {
+                return
+            }
+//            let jsonString = String(data: jsonData, encoding: .utf8)!       // Sarah and/or Jeremy: this is your jsonObject
+            //print("jsonString is: \n" + jsonString)
+            
+            // sending request!
+            // create post request
+            let url = URL(string: "http://104.248.54.97/api/Rides")!
+            var request = URLRequest(url: url)
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.httpMethod = "POST"
+            
+            // insert json data to the request
+            request.httpBody = jsonData
+            
+            let session = URLSession.shared
+            session.dataTask(with: request) { (data, response, error) in
+                if let response = response  {
+                    print(response)
+                }
+                if let data = data {
+                    do {
+                        let json = try JSONSerialization.jsonObject(with: data, options: [])
+                        print(json)
+                    } catch {
+                        print(error)
+                    }
+                }
+            }.resume()
             
             NSLog("Form is completed!")
             performSegue(withIdentifier: "Confirmation", sender: self)
@@ -110,7 +135,6 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
         
         
     }
-    
     
     // error message that you must have two different addresses
     @IBAction func displaySameAddressAlert() {
