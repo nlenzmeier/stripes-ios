@@ -57,8 +57,9 @@ class ViewController: UIViewController {
         
         
         // let url = URL(string: "http://104.248.54.97/api/Health")!
-        let url = URL(string: "http://127.0.0.1:3000/time")!
+//        let url = URL(string: "http://127.0.0.1:3000/time")!
         // let url = URL(string: "http://127.0.0.1:3000/notRunning")!
+        let url = URL(string: "http://104.248.54.97/api/WaitTime")!
         
         let session = URLSession.shared
         let dataTask = session.dataTask(with: url) { data, urlResponse, error in
