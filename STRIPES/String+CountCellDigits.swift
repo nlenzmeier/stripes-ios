@@ -13,8 +13,15 @@ extension String {
     func digitCount() -> Int {
         let digits: Set<Character> = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
         
-        // best method
+        /* reduce - handles for loop for us
+         (into: 0) - starts the value at 0
+         $0 - the accumulator (what's being incremented and updating the return value - before being returned)
+         $1 = each item in turn to process
+         tertiary operator to see if the current index in the string holds a value in the digits set, if it's a valid character, add 1. If not, do nothing (add 0).
+        */
         return reduce(into: 0) { $0 += digits.contains($1) ? 1 : 0 }
+        
+        // other methods below that aren't as good. 
         
         // a way to eliminate the for loop in our program:
         /*

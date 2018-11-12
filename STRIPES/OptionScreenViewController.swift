@@ -36,7 +36,7 @@ class OptionScreenViewController: UIViewController, UITableViewDataSource, UITab
             print("Cancel Ride selected")
             
             // Alert to call STRIPES
-            UIApplication.shared.open(URL(string: "tel:573-442-9672")!, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
+            UIApplication.shared.open(URL(string: "tel:573-442-9672")!, options: [:], completionHandler: nil)
             deselectRows(in: tableView)
         }
     }
@@ -231,9 +231,4 @@ class OptionScreenViewController: UIViewController, UITableViewDataSource, UITab
     }
     */
 
-}
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
-	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }

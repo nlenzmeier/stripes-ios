@@ -21,7 +21,7 @@ class ConfirmationViewController: UIViewController {
         
         #else
         
-        UIApplication.shared.open(URL(string: "tel:573-442-9672")!, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
+        UIApplication.shared.open(URL(string: "tel:573-442-9672")!, options: [:], completionHandler: nil)
         
         #endif
     }

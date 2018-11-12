@@ -26,6 +26,9 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var passengers: UISegmentedControl!
     @IBOutlet weak var dropoffs: UISegmentedControl!
     
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    
+    
     let locationManager = CLLocationManager()
     let geocoder = CLGeocoder()
     
@@ -33,6 +36,7 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
         NSLog("I hit submit!")
  
         // TODO: think of a way to better organize this because this will always be the first error message when an empty form is submitted and doesn't feel right
+        
         if let cellPhoneNumber = self.cellPhoneNumber.text {
             // if there is a 10 or 11 returned from cellPhoneNumber.digitCount() then do this... 
             if [10, 11].contains((cellPhoneNumber.digitCount())) {
@@ -117,14 +121,21 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
             let session = URLSession.shared
             session.dataTask(with: request) { (data, response, error) in
                 if let response = response  {
+                    print("Here is the reponse:")
                     print(response)
+                    print("End reponse")
                 }
                 if let data = data {
                     do {
                         let json = try JSONSerialization.jsonObject(with: data, options: [])
+                        print("Here is the json:")
                         print(json)
+                        print("End json")
                     } catch {
+                        print("Here is the error:")
                         print(error)
+                        print("End error:")
+
                     }
                 }
             }.resume()
@@ -174,6 +185,7 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
 
         // to grab the single location from our arrya of one element
         if let location = locations.first {
+            
             geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
                 NSLog("Placemarks: \(String(describing: placemarks))")
                 
@@ -187,7 +199,7 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
                     
                     let compactLocationElements = locationElements.compactMap { $0 }
                     // compactMap returns the non-nil results within the array locationElements
-                    // $0 means what you names the first parameter, you could also do it this way:
+                    // $0 means what you name the first parameter, you could also do it this way:
                     // let compactLocationElements = locationElements.compactMap { str in str }
                     // { ... } is the anonymous function
                     // meaning that for each element in locationElements, the closure ( { ... } ) will be called
@@ -199,10 +211,19 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
                     let result = compactLocationElements.joined(separator: ", ")
                     NSLog("result: \(result)")
                     
+                    self.removeWaitingWheel()
                     self.pickUpLocation.text = result
                 }
             }
         }
+    }
+    
+    func spinWaitingWheel() {
+        spinner.isHidden = false
+    }
+    
+    func removeWaitingWheel() {
+        spinner.isHidden = true
     }
     
     // since our location grabbing service can fail, we must account for it.
@@ -236,12 +257,11 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
             // is access was granted, we should land here
             
             NSLog("I'm in authorizedWhenInUse!")    // this one should be the one that hits
-            
-            locationManager.requestLocation()
+            beginLocationFinding()
         }
     }
     
-    // since we want the user to only have to press the button ONCE when the app runs the first time, we need to accommodate  that
+    // since we want the user to only have to press the button ONCE when the app runs the first time, we need to accommodate that
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         NSLog("I made is to didchangeAuthorization!")
         
@@ -256,13 +276,15 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
             NSLog("I'm in authorizedAlways 2!")
         case .authorizedWhenInUse:
             NSLog("I'm in authorizedWhenInUse 2!")
-            
-            locationManager.requestLocation()
+            beginLocationFinding()
         }
         
     }
     
-    
+    func beginLocationFinding() {
+        spinWaitingWheel()
+        locationManager.requestLocation()
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

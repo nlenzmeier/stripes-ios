@@ -55,9 +55,8 @@ class ViewController: UIViewController {
         let bottomConstraint = timeDisplayView.bottomAnchor.constraint(equalTo: waitingView.bottomAnchor)
         bottomConstraint.isActive = true
         
-        
         // let url = URL(string: "http://104.248.54.97/api/Health")!
-//        let url = URL(string: "http://127.0.0.1:3000/time")!
+        //let url = URL(string: "http://127.0.0.1:3000/time")!
         // let url = URL(string: "http://127.0.0.1:3000/notRunning")!
         let url = URL(string: "http://104.248.54.97/api/WaitTime")!
         
