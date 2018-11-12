@@ -281,7 +281,7 @@
                                                 <rect key="frame" x="16" y="271.66666666666669" width="343" height="45"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Pickup Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IqL-9d-hHm">
-                                                        <rect key="frame" x="0.0" y="0.0" width="288" height="45"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="45"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="Npb-fs-DeX"/>
                                                         </constraints>
@@ -289,8 +289,8 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
-                                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="b6z-43-3AT">
-                                                        <rect key="frame" x="306" y="0.0" width="37" height="45"/>
+                                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="b6z-43-3AT">
+                                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="45"/>
                                                         <color key="color" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </activityIndicatorView>
                                                 </subviews>
