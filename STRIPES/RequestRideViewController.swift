@@ -63,16 +63,16 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
         
         if (self.firstName.text?.isEmpty)! {
             NSLog("Form is invalid. Missing first name.")
-            displayErrorAlert()
+            displayNameErrorAlert()
         } else if (self.homeAddress.text?.isEmpty)! {
             NSLog("Form is invalid. Missing home address.")
-            displayErrorAlert()
+            displayHomeErrorAlert()
         }else if (self.cellPhoneNumber.text?.isEmpty)! {
             NSLog("Form is invalid. Missing cell phone number.")
-            displayErrorAlert()
+            displayPhoneErrorAlert()
         } else if (self.pickUpLocation.text?.isEmpty)! {
             NSLog("Form is invalid. Missing pickup locaiton.")
-            displayErrorAlert()
+            displayPickupErrorAlert()
         } else {
             // passengers and droppoffs will never be empty
             
@@ -153,28 +153,56 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
                                                 message: "Your pickup location cannot be the same as your home address.",
                                                 preferredStyle: UIAlertController.Style.alert)
         
-        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default, handler: nil))
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         present(alertController, animated: true, completion: nil)
     }
     
     
     // error message that you must have a phone number between 10 and 11
     @IBAction func displayPhoneErrorAlert() {
+        cellPhoneNumber.becomeFirstResponder()
+        
         let alertController = UIAlertController(title: "Error",
                                                 message: "You must have a phone number with 10 to 11 numbers.",
                                                 preferredStyle: UIAlertController.Style.alert)
         
-        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default, handler: nil))
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         present(alertController, animated: true, completion: nil)
     }
     
     // generic error message for everything else
-    @IBAction func displayErrorAlert() {
+    @IBAction func displayNameErrorAlert() {
+        firstName.becomeFirstResponder()
+        
         let alertController = UIAlertController(title: "Error",
                                                 message: "You must answer all fields to request a ride.",
                                                 preferredStyle: UIAlertController.Style.alert)
         
-        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default, handler: nil))
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    // generic error message for everything else
+    @IBAction func displayHomeErrorAlert() {
+        homeAddress.becomeFirstResponder()
+        
+        let alertController = UIAlertController(title: "Error",
+                                                message: "You must answer all fields to request a ride.",
+                                                preferredStyle: UIAlertController.Style.alert)
+        
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    // generic error message for everything else
+    @IBAction func displayPickupErrorAlert() {
+        pickUpLocation.becomeFirstResponder()
+        
+        let alertController = UIAlertController(title: "Error",
+                                                message: "You must answer all fields to request a ride.",
+                                                preferredStyle: UIAlertController.Style.alert)
+        
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         present(alertController, animated: true, completion: nil)
     }
 
