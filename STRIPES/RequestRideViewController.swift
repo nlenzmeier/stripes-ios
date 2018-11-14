@@ -211,7 +211,7 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
         NSLog("Location: \(locationManager.location ?? CLLocation())")      // same as locations, but this is an optional
         NSLog("LOCATIONS: \(locations)")                    // this is not. We use this way.
 
-        // to grab the single location from our arrya of one element
+        // to grab the single location from our array of one element
         if let location = locations.first {
             
             geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
@@ -232,7 +232,7 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
                     // { ... } is the anonymous function
                     // meaning that for each element in locationElements, the closure ( { ... } ) will be called
                     // first str is the parameter to that function
-                    // seond str is the return result from the funtion
+                    // second str is the return result from the function
                     // so let's say zip is nil. we can still get the rest of the address even though we are missing an element
                     NSLog("compact map location elements: \(compactLocationElements)")
                     
@@ -352,7 +352,7 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
         
         /*
          if we had more time, and perhaps more developers, we could ask the first time and it would be slow
-         but the second and so forth times we would actually cache the current location from app's startup BECAUSE they alread granted
+         but the second and so forth times we would actually cache the current location from app's startup BECAUSE they already granted
          us access to their location
          and IF the form is touched between X number of secods (for good accuracy), we'd just use the cached value for the form,
          making the button APPEAR to be faster than it can actually ever be

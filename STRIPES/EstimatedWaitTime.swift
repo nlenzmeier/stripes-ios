@@ -9,6 +9,8 @@
 import Foundation
 
 enum EstimatedWaitTime {
+    case initial
+    case fetching
     case notRunning
     case running(waitTime: Int)
     

@@ -110,6 +110,14 @@ class ViewController: UIViewController {
         
         if let estimatedWaitTime = estimatedWaitTime {
             switch estimatedWaitTime {
+            case .initial:
+                let message = "Starting STRIPES application"
+                let errorVc = ErrorViewController(using: message)
+                self.errorVc = errorVc
+            case .fetching:
+                let message = "Fetching Wait Time"
+                let errorVc = ErrorViewController(using: message)
+                self.errorVc = errorVc
             case .notRunning:
                 let message = "STRIPES is not running at this time."
                 let errorVc = ErrorViewController(using: message)

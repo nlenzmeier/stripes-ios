@@ -86,6 +86,10 @@ class OptionScreenViewController: UIViewController, UITableViewDataSource, UITab
             if indexPath.row == 0 {
                 if let estimatedWaitTime = estimatedWaitTime {
                     switch estimatedWaitTime {
+                    case .initial:
+                        print("We don't need to do anything here")
+                    case .fetching:
+                        print("We don't need to do anything here")
                     case .notRunning:
                         cell.isUserInteractionEnabled = false
                     case .running:
@@ -183,6 +187,10 @@ class OptionScreenViewController: UIViewController, UITableViewDataSource, UITab
 
             if let estimatedWaitTime = estimatedWaitTime {
                 switch estimatedWaitTime {
+                case .initial:
+                    timeLabel.text = "Starting STRIPES App"
+                case .fetching:
+                    timeLabel.text = "Fetching Wait Time"
                 case .notRunning:
                     timeLabel.text = "Not Running"
                 case .running(let waitTime):
