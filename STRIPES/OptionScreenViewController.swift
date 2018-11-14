@@ -82,11 +82,23 @@ class OptionScreenViewController: UIViewController, UITableViewDataSource, UITab
             cell.imageView?.image = UIImage(named: self.images[indexPath.row])
             cell.textLabel?.font = UIFont.systemFont(ofSize: 18.0)
         } else {
-                
-            if indexPath.row == 0 && estimatedWaitTime?.status == "notRunning"{
-                cell.isUserInteractionEnabled = false
+            
+            if indexPath.row == 0 {
+                if let estimatedWaitTime = estimatedWaitTime {
+                    switch estimatedWaitTime {
+                    case .notRunning:
+                        cell.isUserInteractionEnabled = false
+                    case .running:
+                        print("We don't need to do anything here")
+                    }
+                }
             }
-                
+            
+            
+//            if indexPath.row == 0 && estimatedWaitTime?.status == "notRunning"{
+//                cell.isUserInteractionEnabled = false
+//            }
+            
             // setting text, adding disclosure indicator, adding image, and increasing text size
             cell.textLabel?.text = options[indexPath.row]
             cell.imageView?.image = UIImage(named: images[indexPath.row])
@@ -168,12 +180,16 @@ class OptionScreenViewController: UIViewController, UITableViewDataSource, UITab
             
             let timeLabel = UILabel()
             timeLabel.translatesAutoresizingMaskIntoConstraints = false
-            
-            if estimatedWaitTime?.status == "notRunning" {
-                timeLabel.text = "Not Running"
-            } else {
-                timeLabel.text = estimatedWaitTime?.waitTime.shortenWaitTime() ?? "Unknown"
+
+            if let estimatedWaitTime = estimatedWaitTime {
+                switch estimatedWaitTime {
+                case .notRunning:
+                    timeLabel.text = "Not Running"
+                case .running(let waitTime):
+                    timeLabel.text = waitTime.shortenWaitTime()
+                }
             }
+        
             timeLabel.font = UIFont.systemFont(ofSize: 20.0)
             timeLabel.textAlignment = NSTextAlignment.right
             

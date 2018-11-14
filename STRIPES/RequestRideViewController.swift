@@ -148,7 +148,7 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     // error message that you must have two different addresses
-    @IBAction func displaySameAddressAlert() {
+    func displaySameAddressAlert() {
         let alertController = UIAlertController(title: "Error",
                                                 message: "Your pickup location cannot be the same as your home address.",
                                                 preferredStyle: UIAlertController.Style.alert)
@@ -159,7 +159,7 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
     
     
     // error message that you must have a phone number between 10 and 11
-    @IBAction func displayPhoneErrorAlert() {
+    func displayPhoneErrorAlert() {
         cellPhoneNumber.becomeFirstResponder()
         
         let alertController = UIAlertController(title: "Error",
@@ -170,8 +170,8 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
         present(alertController, animated: true, completion: nil)
     }
     
-    // generic error message for everything else
-    @IBAction func displayNameErrorAlert() {
+    // displaying generic error, but clicking into the first name field
+    func displayNameErrorAlert() {
         firstName.becomeFirstResponder()
         
         let alertController = UIAlertController(title: "Error",
@@ -182,8 +182,8 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
         present(alertController, animated: true, completion: nil)
     }
     
-    // generic error message for everything else
-    @IBAction func displayHomeErrorAlert() {
+    // displaying generic error, but clicking into the home address field
+    func displayHomeErrorAlert() {
         homeAddress.becomeFirstResponder()
         
         let alertController = UIAlertController(title: "Error",
@@ -194,8 +194,8 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
         present(alertController, animated: true, completion: nil)
     }
     
-    // generic error message for everything else
-    @IBAction func displayPickupErrorAlert() {
+    // displaying generic error, but clicking into the pick up location field
+    func displayPickupErrorAlert() {
         pickUpLocation.becomeFirstResponder()
         
         let alertController = UIAlertController(title: "Error",

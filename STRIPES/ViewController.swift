@@ -107,14 +107,16 @@ class ViewController: UIViewController {
     }
     
     func reconfigureUI() {
+        
         if let estimatedWaitTime = estimatedWaitTime {
-            if estimatedWaitTime.status == "notRunning" {
+            switch estimatedWaitTime {
+            case .notRunning:
                 let message = "STRIPES is not running at this time."
                 let errorVc = ErrorViewController(using: message)
                 self.errorVc = errorVc
                 transitionFromWaiting(to: errorVc)
-            } else {
-                let waitTimeVc = WaitTimeViewController(using: estimatedWaitTime.waitTime)
+            case .running(let waitTime):
+                let waitTimeVc = WaitTimeViewController(using: Int(waitTime))
                 self.waitTimeVc = waitTimeVc
                 transitionFromWaiting(to: waitTimeVc)
             }
