@@ -14,6 +14,7 @@
 		A412D6ED2152B0F5000E75DC /* LeaveCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A412D6EC2152B0F5000E75DC /* LeaveCommentViewController.swift */; };
 		A412D6EF2152B273000E75DC /* LostAndFoundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A412D6EE2152B273000E75DC /* LostAndFoundViewController.swift */; };
 		A412D6F12152DAE8000E75DC /* UIViewController+TableViewUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A412D6F02152DAE8000E75DC /* UIViewController+TableViewUtilities.swift */; };
+		A41BE831219D36B000FA50C3 /* RideStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41BE830219D36AF00FA50C3 /* RideStatus.swift */; };
 		A422DC452146CB4A00321D4D /* WaitTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A422DC432146CB4A00321D4D /* WaitTimeViewController.swift */; };
 		A422DC462146CB4A00321D4D /* WaitTimeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A422DC442146CB4A00321D4D /* WaitTimeViewController.xib */; };
 		A422DC482147047A00321D4D /* Int+WaitTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = A422DC472147047A00321D4D /* Int+WaitTime.swift */; };
@@ -39,6 +40,7 @@
 		A412D6EC2152B0F5000E75DC /* LeaveCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveCommentViewController.swift; sourceTree = "<group>"; };
 		A412D6EE2152B273000E75DC /* LostAndFoundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostAndFoundViewController.swift; sourceTree = "<group>"; };
 		A412D6F02152DAE8000E75DC /* UIViewController+TableViewUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+TableViewUtilities.swift"; sourceTree = "<group>"; };
+		A41BE830219D36AF00FA50C3 /* RideStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideStatus.swift; sourceTree = "<group>"; };
 		A422DC432146CB4A00321D4D /* WaitTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitTimeViewController.swift; sourceTree = "<group>"; };
 		A422DC442146CB4A00321D4D /* WaitTimeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WaitTimeViewController.xib; sourceTree = "<group>"; };
 		A422DC472147047A00321D4D /* Int+WaitTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+WaitTime.swift"; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				A405D551218A4D62003CA1AD /* UINavigationController+Extensions.swift */,
 				A4CEA4C22190EC8200640009 /* CommentConfirmationViewController.swift */,
 				A48D7E452196A17600F1B84E /* String+CountCellDigits.swift */,
+				A41BE830219D36AF00FA50C3 /* RideStatus.swift */,
 			);
 			path = STRIPES;
 			sourceTree = "<group>";
@@ -193,6 +196,7 @@
 				A42B8087211D3E1400D6E9C6 /* ViewController.swift in Sources */,
 				A40ADE7721516E61009363D3 /* RequestRideViewController.swift in Sources */,
 				A42B8085211D3E1400D6E9C6 /* AppDelegate.swift in Sources */,
+				A41BE831219D36B000FA50C3 /* RideStatus.swift in Sources */,
 				A4CEA4C32190EC8200640009 /* CommentConfirmationViewController.swift in Sources */,
 				A412D6F12152DAE8000E75DC /* UIViewController+TableViewUtilities.swift in Sources */,
 				A422DC4A21471FCA00321D4D /* OptionScreenViewController.swift in Sources */,
