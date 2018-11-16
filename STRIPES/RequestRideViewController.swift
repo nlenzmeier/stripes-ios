@@ -33,14 +33,10 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
     let geocoder = CLGeocoder()
     
     @IBAction func submitForm() {
-        NSLog("I hit submit!")
- 
-        // TODO: think of a way to better organize this because this will always be the first error message when an empty form is submitted and doesn't feel right
         
         if let cellPhoneNumber = self.cellPhoneNumber.text {
             // if there is a 10 or 11 returned from cellPhoneNumber.digitCount() then do this... 
             if [10, 11].contains((cellPhoneNumber.digitCount())) {
-                NSLog("We're valid!")
             } else {
                 displayPhoneErrorAlert()
             }
@@ -62,16 +58,12 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
         }
         
         if (self.firstName.text?.isEmpty)! {
-            NSLog("Form is invalid. Missing first name.")
             displayNameErrorAlert()
         } else if (self.homeAddress.text?.isEmpty)! {
-            NSLog("Form is invalid. Missing home address.")
             displayHomeErrorAlert()
         }else if (self.cellPhoneNumber.text?.isEmpty)! {
-            NSLog("Form is invalid. Missing cell phone number.")
             displayPhoneErrorAlert()
         } else if (self.pickUpLocation.text?.isEmpty)! {
-            NSLog("Form is invalid. Missing pickup locaiton.")
             displayPickupErrorAlert()
         } else {
             // passengers and droppoffs will never be empty
@@ -106,7 +98,6 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
                 return
             }
 //            let jsonString = String(data: jsonData, encoding: .utf8)!       // Sarah and/or Jeremy: this is your jsonObject
-            //print("jsonString is: \n" + jsonString)
             
             // sending request!
             // create post request
@@ -207,9 +198,6 @@ class RequestRideViewController: UIViewController, CLLocationManagerDelegate {
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        NSLog("I made it to didUpdateLocations!")           // Yay! We're here!
-        NSLog("Location: \(locationManager.location ?? CLLocation())")      // same as locations, but this is an optional
-        NSLog("LOCATIONS: \(locations)")                    // this is not. We use this way.
 
         // to grab the single location from our array of one element
         if let location = locations.first {

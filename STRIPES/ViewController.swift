@@ -23,6 +23,11 @@ class ViewController: UIViewController {
     
     var rideStatus: RideStatus? 
     
+    deinit {
+        // de-register for any notifications
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -57,59 +62,40 @@ class ViewController: UIViewController {
         center.addObserver(forName: RideStatus.rideStatusChange,
                            object: nil,
                            queue: OperationQueue.main) { notification in
-                self.reconfigureUI()
-                            print("Just passed reconfigureUI()!")
+                        self.reconfigureUI()
         }
-        
-        // let url = URL(string: "http://104.248.54.97/api/Health")!
-        //let url = URL(string: "http://127.0.0.1:3000/time")!
-        // let url = URL(string: "http://127.0.0.1:3000/notRunning")!
-//        let url = URL(string: "http://104.248.54.97/api/WaitTime")!
-
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        NSLog("*** MADE IT HERE ***")
-       // NSLog("EWT: \(String(describing: estimatedWaitTime))")
         
         print("destination: \(segue.destination)")
         if let navVc = segue.destination as? UINavigationController {
             navVc.navigationBar.barStyle = .black
             
-            NSLog("As Kevin Rudolf would say... I made it!")
             print(String(describing: navVc.topViewController))
             
             if let optVc = navVc.topViewController as? OptionScreenViewController {
-                NSLog("As Kevin Rudolf would say... I made it X 2!")
                 
-                // because estimatedWaitTime is an optional, but we NEED it for OptionScreenViewController
-                // FIX THIS for RideStatus!
-//                if let estimatedWaitTime = estimatedWaitTime {
-//                    optVc.acceptData(estimatedWaitTime: estimatedWaitTime)
-//                }
-                
+                // because rideStatus is an optional, but we NEED it for OptionScreenViewController
                 if let rideStatus = rideStatus {
                     optVc.acceptData(rideStatus: rideStatus)
                 }
                 
             }
         }
-        //acceptData(estimatedWaitTime: estimatedWaitTime)
     }
     
     
     func reconfigureUI() {
-        NSLog("The RideStatus obj: \(rideStatus?.state)")
         
         if let rideStatus = rideStatus {
             switch rideStatus.state {
             case .initial:
-                let message = "Starting STRIPES application"
+                let message = "Loading..."
                 let errorVc = ErrorViewController(using: message)
                 self.errorVc = errorVc
             case .fetching:
-                let message = "Fetching Wait Time"
+                let message = "Loading..."
                 let errorVc = ErrorViewController(using: message)
                 self.errorVc = errorVc
             case .notRunning:

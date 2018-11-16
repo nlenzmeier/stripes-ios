@@ -15,29 +15,26 @@ class OptionScreenViewController: UIViewController, UITableViewDataSource, UITab
     // var estimatedWaitTime: EstimatedWaitTime?
     
     var rideStatus: RideStatus?
-        
+    
+    deinit {
+        // de-register for any notifications
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     func acceptData(rideStatus: RideStatus) {
         self.rideStatus = rideStatus
-        // self.estimatedWaitTime = estimatedWaitTime
-        
-        // print("This is the EWT in the OptionScreenViewController: \(estimatedWaitTime)")
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("I just clicked cell \(indexPath)")
         
         if indexPath == [0,0] {
-            print("Request Ride selected")
             performSegue(withIdentifier: "Request Ride", sender: nil)
         } else if indexPath == [0,1] {
-            print("Leave Comment selected")
             performSegue(withIdentifier: "Leave Comment", sender: nil)
         } else if indexPath == [0,2] {
-            print("Lost and Found selected")
             performSegue(withIdentifier: "Lost and Found", sender: nil)
         } else if indexPath == [0,3] {
-            print("Cancel Ride selected")
-            
             // Alert to call STRIPES
             UIApplication.shared.open(URL(string: "tel:573-442-9672")!, options: [:], completionHandler: nil)
             deselectRows(in: tableView)
@@ -73,14 +70,10 @@ class OptionScreenViewController: UIViewController, UITableViewDataSource, UITab
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         
-        // let timeCell = tableView.dequeueReusableCell(withIdentifier: "WaitTimeCell", for: indexPath)
         
         // checking for the "cancel ride" option since that does not have a disclosure indicator
         if indexPath.row == 3 {
-                
-            // this line below grays out a cell to disable it.
-            // cell.isUserInteractionEnabled = false
-                
+            
             cell.textLabel?.text = options[indexPath.row]
             cell.imageView?.image = UIImage(named: self.images[indexPath.row])
             cell.textLabel?.font = UIFont.systemFont(ofSize: 18.0)
@@ -242,8 +235,7 @@ class OptionScreenViewController: UIViewController, UITableViewDataSource, UITab
         center.addObserver(forName: RideStatus.rideStatusChange,
                            object: nil,
                            queue: OperationQueue.main) { notification in
-                            self.tableView.reloadData()
-                            print("Just passed reloadData()!")
+                        self.tableView.reloadData()
         }
     }
     

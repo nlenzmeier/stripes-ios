@@ -16,8 +16,6 @@ class LeaveCommentViewController: UIViewController {
     
     @IBAction func sendComment() {
         NSLog("I hit submit!")
-
-        // NSLog("comment: \(timeCellcommentBox.text)")
         
         if(commentBox.text.isEmpty) {
             NSLog("Comment box is empty.")
@@ -32,7 +30,6 @@ class LeaveCommentViewController: UIViewController {
             
             let jsonData = try! JSONSerialization.data(withJSONObject: form, options: [])
             //let jsonString = String(data: jsonData, encoding: .utf8)!       // Sarah and/or Jeremy: this is your jsonObject
-            //print("jsonString is: \n" + jsonString)
             
             // create POST request
             let url = URL(string: "http://104.248.54.97/api/LeaveComment")!
@@ -62,7 +59,7 @@ class LeaveCommentViewController: UIViewController {
         }
     }
     
-    // generic error message for everything else
+    // comment box cannot be empty error
     @IBAction func displayErrorAlert() {
         let alertController = UIAlertController(title: "Error",
                                                 message: "Comment box cannot be empty.",
@@ -77,7 +74,6 @@ class LeaveCommentViewController: UIViewController {
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
-        // NSLog("UserInfo: \(timeCellnotification.userInfo)")
         
         guard   // guard means "make sure these items exist"
             let userInfo = notification.userInfo,
@@ -96,8 +92,6 @@ class LeaveCommentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //commentBox.layer.cornerRadius = 10
-
         self.title = "Leave Comment"
         // Do any additional setup after loading the view.
         
