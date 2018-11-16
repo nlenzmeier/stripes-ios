@@ -12,12 +12,15 @@ class OptionScreenViewController: UIViewController, UITableViewDataSource, UITab
     
     @IBOutlet var tableView: UITableView!
     
-    var estimatedWaitTime: EstimatedWaitTime?
+    // var estimatedWaitTime: EstimatedWaitTime?
+    
+    var rideStatus: RideStatus?
         
-    func acceptData(estimatedWaitTime: EstimatedWaitTime) {
-        self.estimatedWaitTime = estimatedWaitTime
+    func acceptData(rideStatus: RideStatus) {
+        self.rideStatus = rideStatus
+        // self.estimatedWaitTime = estimatedWaitTime
         
-        print("This is the EWT in the OptionScreenViewController: \(estimatedWaitTime)")
+        // print("This is the EWT in the OptionScreenViewController: \(estimatedWaitTime)")
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -84,8 +87,9 @@ class OptionScreenViewController: UIViewController, UITableViewDataSource, UITab
         } else {
             
             if indexPath.row == 0 {
-                if let estimatedWaitTime = estimatedWaitTime {
-                    switch estimatedWaitTime {
+                
+                if let rideStatus = rideStatus {
+                    switch rideStatus.state {
                     case .initial:
                         print("We don't need to do anything here")
                     case .fetching:
@@ -96,12 +100,8 @@ class OptionScreenViewController: UIViewController, UITableViewDataSource, UITab
                         print("We don't need to do anything here")
                     }
                 }
+                
             }
-            
-            
-//            if indexPath.row == 0 && estimatedWaitTime?.status == "notRunning"{
-//                cell.isUserInteractionEnabled = false
-//            }
             
             // setting text, adding disclosure indicator, adding image, and increasing text size
             cell.textLabel?.text = options[indexPath.row]
@@ -185,12 +185,12 @@ class OptionScreenViewController: UIViewController, UITableViewDataSource, UITab
             let timeLabel = UILabel()
             timeLabel.translatesAutoresizingMaskIntoConstraints = false
 
-            if let estimatedWaitTime = estimatedWaitTime {
-                switch estimatedWaitTime {
+            if let rideStatus = rideStatus {
+                switch rideStatus.state {
                 case .initial:
-                    timeLabel.text = "Starting STRIPES App"
+                    timeLabel.text = "Loading..."
                 case .fetching:
-                    timeLabel.text = "Fetching Wait Time"
+                    timeLabel.text = "Loading..."
                 case .notRunning:
                     timeLabel.text = "Not Running"
                 case .running(let waitTime):
@@ -237,6 +237,14 @@ class OptionScreenViewController: UIViewController, UITableViewDataSource, UITab
         self.title = "STRIPES"
 
         // Do any additional setup after loading the view.
+        
+        let center = NotificationCenter.default
+        center.addObserver(forName: RideStatus.rideStatusChange,
+                           object: nil,
+                           queue: OperationQueue.main) { notification in
+                            self.tableView.reloadData()
+                            print("Just passed reloadData()!")
+        }
     }
     
     override func didReceiveMemoryWarning() {

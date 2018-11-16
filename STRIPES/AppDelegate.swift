@@ -25,7 +25,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // set navigation bar title color
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         
+        rideStatus.retrieveRideStatus()
         
+        if let vc = window?.rootViewController as? ViewController {
+            // here we can get/set properties on the root view controller
+            vc.rideStatus = rideStatus
+        }
         
         // Override point for customization after application launch.
         return true

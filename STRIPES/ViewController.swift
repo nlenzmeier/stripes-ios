@@ -21,9 +21,7 @@ class ViewController: UIViewController {
     weak var waitTimeVc: UIViewController?
     weak var errorVc: UIViewController?
     
-    var dataTask: URLSessionDataTask?
-    
-    var estimatedWaitTime: EstimatedWaitTime?
+    var rideStatus: RideStatus? 
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,36 +53,25 @@ class ViewController: UIViewController {
         let bottomConstraint = timeDisplayView.bottomAnchor.constraint(equalTo: waitingView.bottomAnchor)
         bottomConstraint.isActive = true
         
+        let center = NotificationCenter.default
+        center.addObserver(forName: RideStatus.rideStatusChange,
+                           object: nil,
+                           queue: OperationQueue.main) { notification in
+                self.reconfigureUI()
+                            print("Just passed reconfigureUI()!")
+        }
+        
         // let url = URL(string: "http://104.248.54.97/api/Health")!
         //let url = URL(string: "http://127.0.0.1:3000/time")!
         // let url = URL(string: "http://127.0.0.1:3000/notRunning")!
-        let url = URL(string: "http://104.248.54.97/api/WaitTime")!
-        
-        let session = URLSession.shared
-        let dataTask = session.dataTask(with: url) { data, urlResponse, error in
-            if let data = data, let string = String(data: data, encoding: .utf8) {
-                print(string)
-                
-                self.estimatedWaitTime = EstimatedWaitTime(data: data)
-                
-                // Because we can only perform UI operations on the main thread
-                DispatchQueue.main.async {
-                    self.reconfigureUI()
-                }
-                
-                // print("status: \(self.estimatedWaitTime?.status)")
-                // print("waitTime: \(self.estimatedWaitTime?.waitTime)")
+//        let url = URL(string: "http://104.248.54.97/api/WaitTime")!
 
-            }
-        }
-        
-        dataTask.resume()
         
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         NSLog("*** MADE IT HERE ***")
-        NSLog("EWT: \(String(describing: estimatedWaitTime))")
+       // NSLog("EWT: \(String(describing: estimatedWaitTime))")
         
         print("destination: \(segue.destination)")
         if let navVc = segue.destination as? UINavigationController {
@@ -97,8 +84,13 @@ class ViewController: UIViewController {
                 NSLog("As Kevin Rudolf would say... I made it X 2!")
                 
                 // because estimatedWaitTime is an optional, but we NEED it for OptionScreenViewController
-                if let estimatedWaitTime = estimatedWaitTime {
-                    optVc.acceptData(estimatedWaitTime: estimatedWaitTime)
+                // FIX THIS for RideStatus!
+//                if let estimatedWaitTime = estimatedWaitTime {
+//                    optVc.acceptData(estimatedWaitTime: estimatedWaitTime)
+//                }
+                
+                if let rideStatus = rideStatus {
+                    optVc.acceptData(rideStatus: rideStatus)
                 }
                 
             }
@@ -106,10 +98,12 @@ class ViewController: UIViewController {
         //acceptData(estimatedWaitTime: estimatedWaitTime)
     }
     
+    
     func reconfigureUI() {
+        NSLog("The RideStatus obj: \(rideStatus?.state)")
         
-        if let estimatedWaitTime = estimatedWaitTime {
-            switch estimatedWaitTime {
+        if let rideStatus = rideStatus {
+            switch rideStatus.state {
             case .initial:
                 let message = "Starting STRIPES application"
                 let errorVc = ErrorViewController(using: message)
