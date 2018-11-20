@@ -29,7 +29,7 @@ class RideStatus {
     
     func retrieveRideStatus() {
         let url = URL(string: "http://104.248.54.97/api/WaitTime")!
-        //let url = URL(string: "http://127.0.0.1:3000/time")!
+        // let url = URL(string: "http://127.0.0.1:3000/time")!
         
         let session = URLSession.shared
         let dataTask = session.dataTask(with: url) { data, urlResponse, error in
