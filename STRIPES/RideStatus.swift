@@ -36,7 +36,10 @@ class RideStatus {
             if let data = data, let string = String(data: data, encoding: .utf8) {
                 print(string)
                 
-                self.state = EstimatedWaitTime.init(data: data)            
+                let state = EstimatedWaitTime.init(data: data)
+                DispatchQueue.main.async {
+                    self.state = state
+                }
             }
         }
         self.dataTask = dataTask
