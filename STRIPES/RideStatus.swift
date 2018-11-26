@@ -39,6 +39,13 @@ class RideStatus {
                 let state = EstimatedWaitTime.init(data: data)
                 DispatchQueue.main.async {
                     self.state = state
+                    
+                    Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { timer in
+                        NSLog("Timer fired!")
+                        
+                        self.retrieveRideStatus()
+                    }
+                    
                 }
             }
         }
